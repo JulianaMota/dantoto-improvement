@@ -1,0 +1,611 @@
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+} /*"border-box" means that the width and height properties (and min/max properties) include content, padding and border*/
+
+body {
+  margin: 0px;
+  font-size: 16px;
+}
+main {
+  background-image: url(../images/background2.png);
+  background-size: 100% auto;
+  background-attachment: fixed;
+  padding-bottom: 5vh;
+  min-height: 100vh;
+}
+
+/*********header************/
+header {
+  background-color: #ae4a0c;
+  display: grid;
+  grid-template: 1fr / 15vw auto auto;
+  height: 7vh;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+header img {
+  width: 109px;
+  padding: 0 0;
+  align-self: center;
+  justify-self: center;
+}
+
+header .burger-menu {
+  display: none;
+}
+
+header .mobile-logos {
+  display: none;
+}
+
+header nav {
+  align-self: center;
+  width: 30vw;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+header nav ul li {
+  align-items: center;
+  list-style-type: none;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header nav ul li a svg {
+  width: 10px;
+  fill: #fff;
+}
+
+header aside {
+  justify-self: flex-end;
+  align-self: center;
+  display: grid;
+  width: 25vw;
+}
+
+header aside ul {
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+header aside ul a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*----------------------Dantoto logo----------------*/
+#logoDantoto {
+  margin-top: 20px;
+  width: 170px;
+  margin-left: 20px;
+}
+
+#logoText {
+  color: white;
+  margin-top: 0;
+  margin-left: 1.3vw;
+  font-size: 10px;
+}
+
+/*----------------------table 1 style-----------------*/
+
+#tableWrapper {
+  width: 65vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  font-size: 19px;
+}
+
+/*table title decoration*/
+#tableTitleDiv {
+  width: 20vw;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  padding: 8px 1vw;
+  float: right;
+  margin-bottom: 15px;
+}
+
+/*table title text*/
+h1 {
+  color: white;
+  font-style: italic;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+/*table header text*/
+th {
+  color: white;
+  text-align: center;
+}
+
+/*table rows text*/
+td {
+  color: white;
+  font-style: italic;
+  text-align: center;
+}
+
+#table1 tr:nth-child(even) {
+  background-color: #f1b59a;
+}
+
+#table1 tr:nth-child(odd) {
+  background-color: #ed9a72;
+}
+
+#table1 tr:hover {
+  background-color: #f27f47;
+}
+
+#table1 tr:nth-child(1) {
+  background-color: transparent;
+}
+
+#table1 tr:nth-child(1):hover {
+  background-color: transparent;
+}
+
+td {
+  width: 20%;
+}
+
+td,
+th {
+  border-style: none;
+  padding: 8px;
+}
+
+td:nth-child(1) {
+  padding: 8px;
+  text-align: right;
+  width: 40px;
+}
+
+td:nth-child(2) {
+  width: 10%;
+  text-align: left;
+}
+
+td:nth-child(5),
+th:nth-child(5) {
+  padding-right: 0;
+}
+
+.photoTable {
+  width: 60px;
+  height: auto;
+  clip-path: circle(30px);
+}
+
+.row {
+  cursor: pointer;
+}
+
+.removeButton {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  height: 50px;
+  width: auto;
+}
+
+.deleteCell {
+  cursor: auto;
+}
+
+/*----------------------table 2 style-----------------*/
+
+#table2Wrapper {
+  width: 65vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 3vh;
+}
+
+.invisible {
+  display: none;
+}
+
+#table2TitleDiv {
+  width: 25vw;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  padding: 8px 1vw;
+  float: right;
+  margin-bottom: 15px;
+}
+
+#table2Wrapper tr:nth-child(even) {
+  background-color: #73371c;
+}
+
+#table2Wrapper tr:nth-child(odd) {
+  background-color: #4e2817;
+}
+
+#table2Wrapper tr:hover {
+  background-color: #371c11;
+}
+
+#table2Wrapper tr:nth-child(1) {
+  background-color: transparent;
+}
+
+#table2Wrapper tr:nth-child(1):hover {
+  background-color: transparent;
+}
+
+/*----------------------modal-----------------*/
+
+/*The Modal from https://www.w3schools.com/howto/howto_css_modals.asp*/
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+/* Modal Content/Box */
+.modalContent {
+  margin: 12% auto;
+  padding: 20px;
+  width: 50vw;
+  height: fit-content;
+  /*padding: 0 0 3vw 0;*/
+  background-color: #605757;
+  background-color: rgba(
+    96,
+    87,
+    87,
+    0.9
+  ); /*It is the same color as #605757, but in rgba*/
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 0.5fr;
+  grid-template-rows: auto auto auto;
+  border-radius: 5px;
+  grid-template-areas:
+    "area0 area0 area0"
+    "area1 area2 area3"
+    "area4 area6 area6";
+}
+
+.photoModal {
+  width: 130px;
+  height: auto;
+  clip-path: circle(64px);
+}
+
+#userPhotoDiv {
+  height: auto;
+  grid-area: area1;
+  text-align: center;
+  font-size: 17px;
+}
+
+#detailedInfo {
+  grid-area: area2;
+  margin-left: 20px;
+}
+
+#closeDiv {
+  grid-area: area0;
+  margin-bottom: 65px;
+}
+
+#deactivateDiv {
+  grid-area: area6;
+}
+
+#deactivateButton {
+  float: right;
+  background-color: #dd642b;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 200px;
+  font-size: 19px;
+  line-height: 19px;
+  margin: 50px 50px 20px 0;
+}
+
+.modalClose {
+  float: right;
+  width: 40px;
+  height: auto;
+}
+
+.modalClose:hover {
+  color: gainsboro;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modalText1 {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 1.5em;
+  font-style: italic;
+  font-weight: lighter;
+  font-size: 18px;
+  line-height: 18px;
+  color: #e4dada;
+}
+
+.modalText2 {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 1.5em;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+/*----------------------warning pop up modal---------------------------*/
+
+.warningWrapper {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.ifDeleteDiv {
+  width: max-content;
+  margin: 20vh auto;
+  background-color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+.ifDeleteDiv h3 {
+  margin: 0;
+}
+
+ifDeleteDiv h4 {
+  margin-top: 5px;
+}
+
+.deleteButton {
+  background-color: #cc0000;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  height: 40px;
+  width: 170px;
+  font-size: 18px;
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.warningClose {
+  float: right;
+  width: 22px;
+  height: auto;
+  cursor: pointer;
+}
+
+/*---------------------------mobile version--------------------------------------*/
+@media all and (max-width: 700px) {
+  /*********header************/
+  header {
+    background-color: #ae4a0c;
+    display: grid;
+    grid-template: 1fr / 60px auto 20vw;
+    height: 7%;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  header img {
+    display: none;
+  }
+  header .burger-menu {
+    display: grid;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    align-content: center;
+    justify-content: center;
+    grid-row-gap: 6px;
+    width: 70px;
+  }
+  header .burger-menu div {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+  }
+  header .mobile-logos {
+    display: grid;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    grid-template: auto / auto auto;
+    grid-column-gap: 10px;
+  }
+  header .mobile-logos .icon-danskspill {
+    display: block;
+    width: 25px;
+    box-sizing: border-box;
+    justify-self: flex-end;
+  }
+  header .mobile-logos .logo-dantoto-header {
+    display: block;
+    width: 120px;
+    box-sizing: border-box;
+    justify-self: center;
+  }
+  header nav {
+    display: none;
+  }
+  header aside {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    justify-self: right;
+    width: 20vw;
+  }
+  header aside ul {
+    padding: 0;
+    padding-inline-start: unset;
+  }
+  header aside ul #createA-aside {
+    display: none;
+  }
+  header aside ul #list-aside {
+    display: none;
+  }
+  header aside ul a {
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  #logoDantoto {
+    width: 28vw;
+  }
+
+  #logoText {
+    margin-top: 0;
+  }
+
+  #tableWrapper {
+    width: 90vw;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  /*table header text*/
+  th {
+    color: white;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /*table rows text*/
+  td {
+    color: white;
+    font-style: italic;
+    font-size: 13px;
+    text-align: center;
+  }
+  td,
+  th {
+    border-style: none;
+    padding: 1px;
+  }
+
+  .photoTable {
+    width: 46px;
+    height: auto;
+    clip-path: circle(23px);
+  }
+
+  #tableTitleDiv {
+    width: 30vw;
+  }
+
+  #table2TitleDiv {
+    width: 40vw;
+  }
+
+  h1 {
+    font-size: 21px;
+    margin: 0 2vw 0 0;
+  }
+
+  /* Modal Content/Box */
+  .modalContent {
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: auto auto auto;
+    border-radius: 5px;
+    grid-template-areas:
+      "area0 area0"
+      "area1 area2"
+      "area6 area6";
+    margin: 12% auto;
+    width: 90vw;
+    height: fit-content;
+    padding: 20px;
+  }
+
+  #table2Wrapper {
+    width: 90vw;
+  }
+
+  .photoModal {
+    width: 100px;
+    height: auto;
+    clip-path: circle(50px);
+  }
+
+  .removeButton {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  #deactivateDiv {
+    grid-area: area6;
+    text-align: center;
+  }
+
+  #deactivateButton {
+    float: none;
+    margin: 20px auto 20px auto;
+    font-size: 16px;
+  }
+
+  .modalClose {
+    float: right;
+    width: 30px;
+    height: auto;
+  }
+
+  .modalText1 {
+    font-size: 17px;
+    line-height: 17px;
+    color: #e4dada;
+  }
+
+  .modalText2 {
+    font-size: 17px;
+    line-height: 17px;
+  }
+}

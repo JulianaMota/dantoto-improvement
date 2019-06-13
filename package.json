@@ -1,0 +1,28 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watchsass": "node-sass --output-style expanded css/style.scss css/output.css -w",
+    "minify-js": "minify js/script.js > dist/js/script.min.js",
+    "minify-html": "minify index.html > dist/index.html",
+    "minify-css": "minify css/list.css > dist/css/list.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JulianaMota/danskspill-onboarding-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JulianaMota/danskspill-onboarding-website/issues"
+  },
+  "homepage": "https://github.com/JulianaMota/danskspill-onboarding-website#readme",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "minify": "^4.1.1",
+    "node-sass": "^4.12.0"
+  }
+}
