@@ -947,3 +947,65 @@ header aside ul a {
     width: 60%;
   }
 }
+
+@media only all and (max-width: 800px) and (orientation: landscape) {
+  header {
+    height: 10%;
+  }
+  header .mobile-logos .logo-dantoto-header {
+    justify-self: left;
+  }
+  #main-onboarding #modal {
+    padding-top: 4vh;
+    /********logo******/
+  }
+  #main-onboarding #modal .slideshow-container article h1 {
+    font-size: 25px;
+  }
+  #main-onboarding #modal .slideshow-container article .gameSize {
+    width: 70vw;
+    background-color: transparent;
+    display: grid;
+    grid-template: 3fr 1fr /1fr;
+  }
+  #main-onboarding #modal .slideshow-container article .gameSize svg {
+    align-self: center;
+    overflow: hidden;
+    width: 100%;
+    height: 45vh;
+    box-sizing: border-box;
+  }
+  #main-onboarding #modal .slideshow-container article .gameSize button {
+    align-self: center;
+    height: 7vh;
+  }
+  #main-onboarding #modal .slideshow-container article div {
+    height: 50vh;
+  }
+  #main-onboarding #modal .slideshow-container article div img {
+    width: 50px;
+    padding: 0 0 5px 0;
+  }
+  #main-onboarding #modal .slideshow-container article div .pointsSlide-img {
+    width: 200px;
+  }
+  #main-onboarding #modal .slideshow-container article div h2 {
+    font-size: 20px;
+  }
+  #main-onboarding #modal .slideshow-container article div p {
+    width: 80%;
+    line-height: 1.4;
+  }
+  #main-onboarding #modal .slideshow-container .arrowSize {
+    width: 20px;
+  }
+  #main-onboarding #modal .slideshow-container .next {
+    right: 3%;
+  }
+  #main-onboarding #modal .slideshow-container .prev {
+    left: 3%;
+  }
+  #main-onboarding #modal section {
+    width: 60%;
+  }
+}
