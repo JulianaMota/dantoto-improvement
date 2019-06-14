@@ -1,4 +1,5 @@
 window.addEventListener("load", loadSVG);
+let svg;
 
 //show graphic - load SVG
 
@@ -34,13 +35,14 @@ function loadSVG() {
         document.querySelector("#savePoint").innerHTML =
           "If you play you can win points for the real betting";
       }
+      svg = document.querySelector(".gameSize svg");
+      init(svg);
     });
 }
 
 // --------------------------------------- animate list of horses ----------------------------------
 
 function animationFallingBoxes() {
-
   document.querySelector("#playButton").addEventListener("click", () => {
     document.querySelector("#youWonPlaceholder").innerHTML =
       "YOU WON <span id='pointsPlaceholder'>30</span> POINTS";

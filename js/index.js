@@ -2,48 +2,56 @@
 //global variables
 let slideIndex = 1;
 const svgdiv = document.querySelector(".gameSize");
+const closeFullBtn = document.querySelector("#closefull-btn");
+const openFullBtn = document.querySelector("#full-btn");
 
 //start init function when page loads
 window.addEventListener("DOMContentLoaded", init);
 
 //init funtion with arrow eventlistners and call funtions for slideshow and dot event
 function init() {
+  console.log(svg);
+
+  const xBtn = document.querySelector("#closeIcon");
+  console.log(xBtn);
+  // closeFullBtn.style.display = "none";
+
   const prev = document.querySelector(".prev");
   prev.addEventListener("click", goPrev);
   const next = document.querySelector(".next");
   next.addEventListener("click", goNext);
 
-  document.querySelector("#full-btn").addEventListener("click", gamefullscreen);
-  document
-    .querySelector("#closefull-btn")
-    .addEventListener("click", closeFullscreen);
+  openFullBtn.addEventListener("click", gamefullscreen);
+  xBtn.addEventListener("click", closeFullscreen);
 
   showSlides(slideIndex);
   dotEvent();
 }
 
 function gamefullscreen() {
+  console.log(svg);
   console.log("working");
 
+  console.log(openFullBtn);
   console.log(svgdiv);
 
-  if (svgdiv.requestFullscreen) {
-    svgdiv.requestFullscreen();
-    document.querySelector("full-btn").style.display = "none";
-  } else if (svgdiv.mozRequestFullScreen) {
+  if (svg.requestFullscreen) {
+    svg.requestFullscreen();
+    // alert("change for landscape for a better visualizationof the game");
+  } else if (svg.mozRequestFullScreen) {
     /* Firefox */
-    svgdiv.mozRequestFullScreen();
-  } else if (svgdiv.webkitRequestFullscreen) {
+    svg.mozRequestFullScreen();
+  } else if (svg.webkitRequestFullscreen) {
     /* Chrome, Safari & Opera */
-    svgdiv.webkitRequestFullscreen();
-  } else if (svgdiv.msRequestFullscreen) {
+    svg.webkitRequestFullscreen();
+  } else if (svg.msRequestFullscreen) {
     /* IE/Edge */
-    svgdiv.msRequestFullscreen();
+    svg.msRequestFullscreen();
   }
 }
 
 function closeFullscreen() {
-  console.log("working");
+  console.log(closeFullBtn);
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) {
@@ -51,7 +59,6 @@ function closeFullscreen() {
     document.mozCancelFullScreen();
   } else if (document.webkitExitFullscreen) {
     /* Chrome, Safari and Opera */
-
     document.webkitExitFullscreen();
   } else if (document.msExitFullscreen) {
     /* IE/Edge */
