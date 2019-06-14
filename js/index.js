@@ -1,6 +1,7 @@
 "use strict";
 //global variables
 let slideIndex = 1;
+const svgdiv = document.querySelector(".gameSize");
 
 //start init function when page loads
 window.addEventListener("DOMContentLoaded", init);
@@ -11,8 +12,51 @@ function init() {
   prev.addEventListener("click", goPrev);
   const next = document.querySelector(".next");
   next.addEventListener("click", goNext);
+
+  document.querySelector("#full-btn").addEventListener("click", gamefullscreen);
+  document
+    .querySelector("#closefull-btn")
+    .addEventListener("click", closeFullscreen);
+
   showSlides(slideIndex);
   dotEvent();
+}
+
+function gamefullscreen() {
+  console.log("working");
+
+  console.log(svgdiv);
+
+  if (svgdiv.requestFullscreen) {
+    svgdiv.requestFullscreen();
+    document.querySelector("full-btn").style.display = "none";
+  } else if (svgdiv.mozRequestFullScreen) {
+    /* Firefox */
+    svgdiv.mozRequestFullScreen();
+  } else if (svgdiv.webkitRequestFullscreen) {
+    /* Chrome, Safari & Opera */
+    svgdiv.webkitRequestFullscreen();
+  } else if (svgdiv.msRequestFullscreen) {
+    /* IE/Edge */
+    svgdiv.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  console.log("working");
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    /* Firefox */
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    /* Chrome, Safari and Opera */
+
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    /* IE/Edge */
+    document.msExitFullscreen();
+  }
 }
 
 //event listner for dots to conect with weach slide
