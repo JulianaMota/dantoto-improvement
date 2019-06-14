@@ -360,3 +360,8 @@ document.querySelector("#full").addEventListener("click", function() {
   });
   displayUsers(filteredAccounts);
 });
+
+document.querySelector("#all").addEventListener("click", function() {
+  filteredAccounts = arrayOfUsers;
+  displayUsers(filteredAccounts);
+});
