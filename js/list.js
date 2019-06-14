@@ -356,7 +356,7 @@ document.querySelector("#soft").addEventListener("click", function() {
 
 document.querySelector("#full").addEventListener("click", function() {
   filteredAccounts = arrayOfUsers.filter(function(user) {
-    return user.fullname === "Anders Sang";
+    return user.fullname !== undefined;
   });
   displayUsers(filteredAccounts);
 });
