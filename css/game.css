@@ -144,7 +144,7 @@ main {
 
 .cls-3-2,
 .cls-3-3 {
-  opacity: 0.31;
+  opacity: 0;
 }
 
 .cls-3-3 {
@@ -751,5 +751,12 @@ main {
 }
 
 #playAgainButton {
+  cursor: pointer;
+}
+#betOnText .cls-2-6 {
+  opacity: 0;
+}
+
+.startTheRace {
   cursor: pointer;
 }

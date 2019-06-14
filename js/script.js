@@ -40,15 +40,15 @@ function loadSVG() {
 // --------------------------------------- animate list of horses ----------------------------------
 
 function animationFallingBoxes() {
-
   document.querySelector("#playButton").addEventListener("click", () => {
     document.querySelector("#youWonPlaceholder").innerHTML =
-      "YOU WON <span id='pointsPlaceholder'>30</span> POINTS";
+      "YOU WON <span id='pointsPlaceholder'>30</span>";
 
     document.querySelector("#FIRST").classList.add("hide");
     TweenLite.to("#playButton", 1, {
       scale: 0.5
     });
+    document.querySelector("#GhostRiders").play();
 
     let whooshSound = document.querySelectorAll(
       "#whooshSound0, #whooshSound1, #whooshSound2, #whooshSound3"
@@ -80,12 +80,6 @@ function animationFallingBoxes() {
           document.querySelector("#SECOND").classList.add("hide");
           document.querySelector("#THIRD").classList.remove("hide");
 
-          TweenMax.to("#lets-race", 1.4, {
-            scale: 5,
-            opacity: 0,
-            transformOrigin: "50% 50%"
-          });
-
           // document.querySelector("#lets-race").addEventListener("click", () => {
           //   document.querySelector("#THIRD").classList.add("hide");
           //   document.querySelector(".cls-4-1").classList.remove("hide");
@@ -100,6 +94,8 @@ function animateListOfHorses() {
 
   let allBoxes_a = document.querySelectorAll(".cls-2-4a");
   let textGroup = document.querySelectorAll(".text-group");
+  let textGroupBetOn = document.querySelectorAll("#betOnText .cls-2-6");
+
   let allImageHorses = document.querySelectorAll(
     "#horseImage1, #horseImage2, #horseImage3, #horseImage4"
   );
@@ -118,8 +114,14 @@ function animateListOfHorses() {
           scaleY: 0,
           transformOrigin: "100% 100%"
         });
+        // TweenMax.to(textGroup[i], 0.4, {
+        //   y: "-70"
+        // });
         TweenMax.to(textGroup[i], 0.4, {
-          y: "-70"
+          opacity: "0"
+        });
+        TweenMax.to(textGroupBetOn[i], 0.4, {
+          opacity: "1"
         });
       });
     });
@@ -136,8 +138,14 @@ function animateListOfHorses() {
           scaleY: 0.33,
           transformOrigin: "100% 100%"
         });
+        // TweenMax.to(textGroup[i], 0.4, {
+        //   y: "0"
+        // });
         TweenMax.to(textGroup[i], 0.4, {
-          y: "0"
+          opacity: "1"
+        });
+        TweenMax.to(textGroupBetOn[i], 0.4, {
+          opacity: "0"
         });
       });
     });
@@ -152,6 +160,7 @@ let scores = [];
 let horses = [];
 let chosenHorse;
 let position;
+let scoresString = [];
 
 // bet on a horse
 
@@ -160,7 +169,14 @@ function clickToBet(event) {
   if (event.target.parentElement.parentElement.dataset.horse) {
     // Set the value a variable “chosenHorse” with the value of the “data – horse” attribute
     chosenHorse = event.target.parentElement.parentElement.dataset.horse;
-    horseRace();
+    // horseRace();
+
+    document
+      .querySelector(".startTheRace")
+      .addEventListener("click", horseRace);
+    document.querySelector(
+      "#race [data-horse='" + chosenHorse + "']"
+    ).style.opacity = "0.3";
 
     console.log(
       chosenHorse,
@@ -173,14 +189,18 @@ let randomVal = Math.random(); // Variable used to create a random easing for th
 
 function horseRace() {
   let raceSound = document.querySelector("#raceSound");
+  TweenMax.to(".startTheRace", 0.4, {
+    opacity: "0"
+  });
+  TweenMax.to("#lets-race", 1.4, {
+    scale: 5,
+    opacity: 0,
+    transformOrigin: "50% 50%"
+  });
 
   let animateArrayOfHorses = document.querySelectorAll(
     "#white-horse, #brown-white-horse, #black-horse, #brown-horse"
   ); // the array contains all the horses from the scene with race, that will be animate with for loop function
-
-  document.querySelector(
-    "#race [data-horse='" + chosenHorse + "']"
-  ).style.opacity = "0.7";
 
   for (let i = 0; i < animateArrayOfHorses.length; i++) {
     raceSound.play();
@@ -234,6 +254,13 @@ function horseRace() {
         console.log(horses);
         console.log(horses.length);
         if (horses.length === 4) {
+          scores.forEach(element => {
+            scoresString.push(element.toString().replace(".", ":"));
+          });
+          scoresString.sort(function(a, b) {
+            return a - b;
+          });
+          console.log(scoresString);
           showScores();
           position = horses.indexOf(chosenHorse);
           console.log(position);
@@ -241,7 +268,6 @@ function horseRace() {
           document.querySelector(".cls-4-1").classList.remove("hide");
           let scorseBoxes = Array.from(document.querySelectorAll(".scorseBox"));
           scorseBoxes[position].style.opacity = "0.8";
-
           document
             .querySelector(".nextButton")
             .addEventListener("click", showPoints);
@@ -250,14 +276,37 @@ function horseRace() {
             .addEventListener("click", () => {
               document.querySelector(".cls-4-1").classList.add("hide");
               document.querySelector("#FIRST").classList.remove("hide");
-              document.location.reload();
+              scorseBoxes[position].style.opacity = "0.31";
+              resetGame();
+
+              // document.location.reload();
             });
         }
       }
     });
   }
 }
+function resetGame() {
+  console.log("check reset");
+  horses = [];
+  scores = [];
+  scoresString = [];
+  document.querySelector(
+    "#race [data-horse='" + chosenHorse + "']"
+  ).style.opacity = "0";
 
+  document.querySelector(".startTheRace").style.opacity = "1";
+  let animateArrayOfHorses = document.querySelectorAll(
+    "#white-horse, #brown-white-horse, #black-horse, #brown-horse"
+  );
+  for (let i = 0; i < animateArrayOfHorses.length; i++) {
+    let element = animateArrayOfHorses[i];
+    TweenMax.to(element, 1, {
+      x: 0
+    });
+    // element.style.transform = "translateX(0px)";
+  }
+}
 // ------------------------------------------- show scores -------------------------------------
 
 function showScores() {
@@ -266,7 +315,7 @@ function showScores() {
   console.log(horseNames.length);
   for (let i = 0; i < horseNames.length; i++) {
     horseNames[i].textContent = horses[i];
-    horsesTimes[i].textContent = scores[i];
+    horsesTimes[i].textContent = scoresString[i] + "s";
   }
 }
 
