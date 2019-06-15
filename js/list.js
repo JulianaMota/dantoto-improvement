@@ -124,6 +124,7 @@ function displayUsers(arrayOfUsers) {
       row.addEventListener("click", e => {
         showModal(user.id);
         document.querySelector("#deactivateButton").style.display = "block";
+        document.querySelector("#activateButton").style.display = "none";
       });
     });
 
@@ -219,6 +220,7 @@ function displayDeactivated(deactivatedList) {
       row.addEventListener("click", e => {
         showModal(user.id);
         document.querySelector("#deactivateButton").style.display = "none";
+        document.querySelector("#activateButton").style.display = "block";
       });
     });
     document.querySelector("#table2").appendChild(clone);
@@ -245,10 +247,10 @@ function deleteUser(id) {
     .then(res => res.json())
     .then(data => {});
   //deleting from the object
-  let arrayId = findById(id, arrayOfUsers);
+  let arrayId = findUserById(id, arrayOfUsers);
   if (arrayId < 0) {
     //removing from deactivated
-    arrayId = findById(id, deactivatedList);
+    arrayId = findUserById(id, deactivatedList);
     deactivatedList.splice(arrayId, 1);
   } else {
     //removing from users
@@ -261,7 +263,7 @@ function deleteUser(id) {
   displayDeactivated(deactivatedList);
 }
 
-function findById(id, arrayToCheck) {
+function findUserById(id, arrayToCheck) {
   //as this function checks both arrays,array to check has to be passed
   return arrayToCheck.findIndex(obj => obj.id === id); //the function finds ID of a user in the object (ID in function "deleteTask" argument is an ID number from the database (different than in object)
 }
@@ -289,6 +291,7 @@ function showModal(id) {
       let telephone = document.querySelector("#Telephone");
       let address = document.querySelector("#Address");
       let button = document.querySelector("#deactivateButton");
+      let activateButton = document.querySelector("#activateButton");
       //console.log(data.Photo);
 
       if (data.Photo === undefined || data.Photo.length === 0) {
@@ -325,6 +328,10 @@ function showModal(id) {
       button.onclick = function() {
         deactivateUser(id);
       };
+
+      activateButton.onclick = function() {
+        activateUser(id);
+      };
     });
 }
 
@@ -333,11 +340,21 @@ function hideModal() {
 }
 
 function deactivateUser(id) {
-  let rowNo = findById(id, arrayOfUsers);
+  let rowNo = findUserById(id, arrayOfUsers);
   deactivatedList.push(arrayOfUsers[rowNo]);
-  let obj = arrayOfUsers.splice(rowNo, 1); //the variable has a value of a number so it can be used as index in splice
+  arrayOfUsers.splice(rowNo, 1); //the variable has a value of a number so it can be used as index in splice
   displayUsers(arrayOfUsers);
   hideModal();
+  displayDeactivated(deactivatedList);
+  hideModal();
+}
+
+function activateUser(id) {
+  //alert("activateUser");
+  let rowNo = findUserById(id, deactivatedList);
+  arrayOfUsers.push(deactivatedList[rowNo]);
+  deactivatedList.splice(rowNo, 1);
+  displayUsers(arrayOfUsers);
   displayDeactivated(deactivatedList);
   hideModal();
 }
