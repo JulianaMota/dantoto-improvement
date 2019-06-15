@@ -1,6 +1,6 @@
 let modal = document.querySelector(".modal");
 let modalClose = document.querySelector(".modalClose");
-let deactivatedList = [];
+let arrayOfDeactivated = [];
 let arrayOfUsers = [];
 
 //prototype object
@@ -80,7 +80,6 @@ function displayUsers(arrayOfUsers) {
     }
     clone.querySelector(".name").textContent = user.username;
 
-    //console.log(user.wins);
     if (
       user.wins === undefined ||
       user.wins === "https://dantoto-eb44.restdb.io/media/undefined"
@@ -118,12 +117,12 @@ function displayUsers(arrayOfUsers) {
     //warning modal cloned
     clone2.querySelector(".warningWrapper").id = "warningWrapper" + user.id;
 
-    //console.log(user.id);
     let rows = clone.querySelectorAll(".row");
     rows.forEach(row => {
       row.addEventListener("click", e => {
         showModal(user.id);
         document.querySelector("#deactivateButton").style.display = "block";
+        document.querySelector("#activateButton").style.display = "none";
       });
     });
 
@@ -144,7 +143,7 @@ function displayUsers(arrayOfUsers) {
     });
 
     document.querySelector("#table1").appendChild(clone);
-    document.querySelector("#parent2").appendChild(clone2);
+    document.querySelector("#main").appendChild(clone2);
   });
 }
 
@@ -206,7 +205,6 @@ function displayDeactivated(deactivatedList) {
     }
 
     clone.querySelector(".name").textContent = user.username;
-    //clone.querySelector(".removeButton").id = "removeButton" + user.id;
     let removeButtonId = "removeButton" + user.id;
     clone.querySelector(".removeButton").id = removeButtonId;
     removeButtonObject = clone.querySelector(".removeButton");
@@ -219,6 +217,7 @@ function displayDeactivated(deactivatedList) {
       row.addEventListener("click", e => {
         showModal(user.id);
         document.querySelector("#deactivateButton").style.display = "none";
+        document.querySelector("#activateButton").style.display = "block";
       });
     });
     document.querySelector("#table2").appendChild(clone);
@@ -229,11 +228,10 @@ function displayDeactivated(deactivatedList) {
   }
 }
 
-/*---------------------------------------------------------------deleting from database-----------------------------------------------------------------*/
+/*---------------------------------------------------------------deleting from the database-----------------------------------------------------------------*/
 
 function deleteUser(id) {
-  //deleting from the database
-
+  //deleting from the database by "delete" method:
   fetch("https://dantoto-eb44.restdb.io/rest/dantoto-users/" + id, {
     method: "delete",
     headers: {
@@ -244,88 +242,93 @@ function deleteUser(id) {
   })
     .then(res => res.json())
     .then(data => {});
-  //deleting from the object
-  let arrayId = findById(id, arrayOfUsers);
+
+  let arrayId = findUserById(id, arrayOfUsers);
   if (arrayId < 0) {
-    //removing from deactivated
-    arrayId = findById(id, deactivatedList);
-    deactivatedList.splice(arrayId, 1);
+    //removing from array of deactivated
+    arrayId = findUserById(id, arrayOfDeactivated);
+    arrayOfDeactivated.splice(arrayId, 1);
   } else {
-    //removing from users
+    //removing from array of users
     arrayOfUsers.splice(arrayId, 1);
   }
 
   //updating the table view
   hideWarning(id);
   displayUsers(arrayOfUsers);
-  displayDeactivated(deactivatedList);
+  displayDeactivated(arrayOfDeactivated);
 }
 
-function findById(id, arrayToCheck) {
-  //as this function checks both arrays,array to check has to be passed
-  return arrayToCheck.findIndex(obj => obj.id === id); //the function finds ID of a user in the object (ID in function "deleteTask" argument is an ID number from the database (different than in object)
+function findUserById(id, arrayToCheck) {
+  // this function can check both arrays, so "arrayToCheck" has to be passed
+  return arrayToCheck.findIndex(obj => obj.id === id); //This function finds index of a user with given ID in the defined array. If it finds such a user it returns index number (can be used as a row number in a table), if it does not find user with such id it returns "-1"
 }
 
-/*---------------------------------------------------------------------modal---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------modal with user details---------------------------------------------------------------------------*/
 function showModal(id) {
-  //console.log(id);
+  //the if statement below checks which table was clicked, so if it should display data of a user from arrayOfUsers or from arrayOfDeactivated
+  let rowNoUsers = findUserById(id, arrayOfUsers);
+  let rowNoDeactivated = findUserById(id, arrayOfDeactivated);
 
-  fetch("https://dantoto-eb44.restdb.io/rest/dantoto-users/" + id, {
-    method: "get",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-      "x-apikey": "5ce6c77b780a473c8df5cb6d",
-      "cache-control": "no-cache"
-    }
-  })
-    .then(res => res.json())
-    .then(data => {
-      //console.log(data);
-      modal.style.display = "block";
-      let photo = document.querySelector(".photoModal");
-      let username = document.querySelector("#Username");
-      let fullname = document.querySelector("#Fullname");
-      let email = document.querySelector("#Email");
-      let telephone = document.querySelector("#Telephone");
-      let address = document.querySelector("#Address");
-      let button = document.querySelector("#deactivateButton");
-      //console.log(data.Photo);
+  let data;
+  if (rowNoUsers < 0) {
+    data = arrayOfDeactivated[rowNoDeactivated];
+  } else {
+    data = arrayOfUsers[rowNoUsers];
+  }
 
-      if (data.Photo === undefined || data.Photo.length === 0) {
-        photo.src = "./images/noPhoto.png";
-      } else {
-        photo.src = "https://dantoto-eb44.restdb.io/media/" + data.Photo;
-      }
+  modal.style.display = "block";
+  let photo = document.querySelector(".photoModal");
+  let username = document.querySelector("#Username");
+  let fullname = document.querySelector("#Fullname");
+  let email = document.querySelector("#Email");
+  let telephone = document.querySelector("#Telephone");
+  let address = document.querySelector("#Address");
+  let deactivateButton = document.querySelector("#deactivateButton");
+  let activateButton = document.querySelector("#activateButton");
 
-      if (data.Fullname === undefined) {
-        fullname.textContent = ".....";
-      } else {
-        fullname.textContent = data.Fullname;
-      }
+  //the if statements below are used to decide what will be displayed if there is no information about user in one of categories in the database (no photo, no address etc.)
+  if (
+    data.photo === "https://dantoto-eb44.restdb.io/media/" ||
+    data.photo === "https://dantoto-eb44.restdb.io/media/undefined"
+  ) {
+    photo.src = "./images/noPhoto.png";
+  } else {
+    photo.src = data.photo;
+  }
 
-      if (data.Telephone === undefined) {
-        telephone.textContent = ".....";
-      } else {
-        telephone.textContent = data.Telephone;
-      }
+  if (data.fullname === undefined) {
+    fullname.textContent = ".....";
+  } else {
+    fullname.textContent = data.fullname;
+  }
 
-      if (data.Address === undefined) {
-        address.textContent = ".....";
-      } else {
-        address.textContent = data.Address;
-      }
+  if (data.telephone === undefined) {
+    telephone.textContent = ".....";
+  } else {
+    telephone.textContent = data.telephone;
+  }
 
-      username.textContent = data.Username;
+  if (data.address === undefined) {
+    address.textContent = ".....";
+  } else {
+    address.textContent = data.address;
+  }
 
-      email.textContent = data.Email;
+  username.textContent = data.username;
 
-      modalClose.onclick = function() {
-        hideModal();
-      };
-      button.onclick = function() {
-        deactivateUser(id);
-      };
-    });
+  email.textContent = data.email;
+
+  modalClose.onclick = function() {
+    hideModal();
+  };
+  deactivateButton.onclick = function() {
+    deactivateUser(id);
+  };
+
+  activateButton.onclick = function() {
+    activateUser(id);
+  };
 }
 
 function hideModal() {
@@ -333,16 +336,26 @@ function hideModal() {
 }
 
 function deactivateUser(id) {
-  let rowNo = findById(id, arrayOfUsers);
-  deactivatedList.push(arrayOfUsers[rowNo]);
-  let obj = arrayOfUsers.splice(rowNo, 1); //the variable has a value of a number so it can be used as index in splice
+  let rowNo = findUserById(id, arrayOfUsers);
+  arrayOfDeactivated.push(arrayOfUsers[rowNo]);
+  arrayOfUsers.splice(rowNo, 1); //the variable rowNo has a value of a number so it can be used as index in splice method
   displayUsers(arrayOfUsers);
   hideModal();
-  displayDeactivated(deactivatedList);
+  displayDeactivated(arrayOfDeactivated);
   hideModal();
 }
 
-// Filtering
+function activateUser(id) {
+  //alert("activateUser");
+  let rowNo = findUserById(id, arrayOfDeactivated);
+  arrayOfUsers.push(arrayOfDeactivated[rowNo]);
+  arrayOfDeactivated.splice(rowNo, 1);
+  displayUsers(arrayOfUsers);
+  displayDeactivated(arrayOfDeactivated);
+  hideModal();
+}
+
+/*---------------------------------------------------------------------filtering---------------------------------------------------------------------------*/
 
 let filteredAccounts = arrayOfUsers;
 console.log(filteredAccounts);

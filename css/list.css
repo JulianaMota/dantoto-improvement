@@ -382,7 +382,8 @@ th:nth-child(5) {
   grid-area: area6;
 }
 
-#deactivateButton {
+#deactivateButton,
+#activateButton {
   float: right;
   background-color: #dd642b;
   color: white;
