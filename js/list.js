@@ -399,7 +399,7 @@ document
 
 let sortedUsers = arrayOfUsers;
 displayUsers(sortedUsers);
-console.log(sortedUsers);
+//console.log(sortedUsers);
 
 function sortByUserName() {
   function sort(a, b) {
@@ -411,5 +411,54 @@ function sortByUserName() {
   }
   sortedUsers.sort(sort);
   displayUsers(sortedUsers);
+  //console.log(sortedUsers);
+}
+document.querySelector("#user-wins").addEventListener("click", sortByWins);
+function sortByWins() {
+  function sort(a, b) {
+    if (a.wins < b.wins) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  sortedUsers.sort(sort);
+
+  displayUsers(sortedUsers);
+  //console.log(sortedUsers);
+}
+
+document.querySelector("#user-losses").addEventListener("click", sortByLosses);
+function sortByLosses() {
+  function sort(a, b) {
+    if (a.looses < b.looses) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  sortedUsers.sort(sort);
+
+  displayUsers(sortedUsers);
   console.log(sortedUsers);
+  console.log(sortByLosses);
+}
+
+document
+  .querySelector("#user-rating")
+  .addEventListener("click", sortByUserRating);
+
+function sortByUserRating() {
+  function sort(a, b) {
+    if (a.rating < b.rating) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  sortedUsers.sort(sort);
+
+  displayUsers(sortedUsers);
+  console.log(sortedUsers);
+  console.log(sortByLosses);
 }
