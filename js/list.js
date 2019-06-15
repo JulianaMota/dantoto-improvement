@@ -342,6 +342,7 @@ function deactivateUser(id) {
   displayUsers(arrayOfUsers);
   hideModal();
   displayDeactivated(arrayOfDeactivated);
+
   hideModal();
 }
 
@@ -358,23 +359,34 @@ function activateUser(id) {
 /*---------------------------------------------------------------------filtering---------------------------------------------------------------------------*/
 
 let filteredAccounts = arrayOfUsers;
-console.log(filteredAccounts);
+let filteredDeactivatedAccounts = arrayOfDeactivated;
+//console.log(filteredAccounts);
+//console.log(filteredDeactivatedAccounts);
 
 document.querySelector("#soft").addEventListener("click", function() {
+  filteredDeactivatedAccounts = arrayOfDeactivated.filter(function(user) {
+    return user.fullname === undefined;
+  });
   filteredAccounts = arrayOfUsers.filter(function(user) {
     return user.fullname === undefined;
   });
   displayUsers(filteredAccounts);
+  displayDeactivated(filteredDeactivatedAccounts);
 });
 
 document.querySelector("#full").addEventListener("click", function() {
+  filteredDeactivatedAccounts = arrayOfDeactivated.filter(function(user) {
+    return user.fullname !== undefined;
+  });
   filteredAccounts = arrayOfUsers.filter(function(user) {
     return user.fullname !== undefined;
   });
   displayUsers(filteredAccounts);
+  displayDeactivated(filteredDeactivatedAccounts);
 });
 
 document.querySelector("#all").addEventListener("click", function() {
   filteredAccounts = arrayOfUsers;
   displayUsers(filteredAccounts);
+  displayDeactivated(arrayOfDeactivated);
 });
