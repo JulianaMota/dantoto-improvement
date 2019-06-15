@@ -261,6 +261,59 @@ th:nth-child(5) {
   background-color: transparent;
 }
 
+/*--------------filter buttons----------------*/
+#box {
+  display: grid;
+
+  grid-template-columns: 190px 190px 190px;
+  grid-template-rows: 2px 50px;
+}
+
+#soft {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  cursor: pointer;
+  background-color: #eba889;
+  color: white;
+  border-style: none;
+  border-radius: 4px;
+  height: 40px;
+  width: 160px;
+  font-size: 17px;
+}
+
+#full {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  cursor: pointer;
+  background-color: #eba889;
+  color: white;
+  border-style: none;
+  border-radius: 4px;
+  height: 40px;
+  width: 160px;
+  font-size: 17px;
+}
+
+#all {
+  grid-column: 3/4;
+  grid-row: 2/3;
+  cursor: pointer;
+  background-color: #eba889;
+  color: white;
+  border-style: none;
+  border-radius: 4px;
+  height: 40px;
+  width: 160px;
+  font-size: 17px;
+}
+
+#soft:hover,
+#full:hover,
+#all:hover {
+  background-color: rgba(0, 0, 0, 0.63);
+}
+
 /*----------------------modal-----------------*/
 
 /*The Modal from https://www.w3schools.com/howto/howto_css_modals.asp*/

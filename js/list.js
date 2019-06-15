@@ -341,3 +341,27 @@ function deactivateUser(id) {
   displayDeactivated(deactivatedList);
   hideModal();
 }
+
+// Filtering
+
+let filteredAccounts = arrayOfUsers;
+console.log(filteredAccounts);
+
+document.querySelector("#soft").addEventListener("click", function() {
+  filteredAccounts = arrayOfUsers.filter(function(user) {
+    return user.fullname === undefined;
+  });
+  displayUsers(filteredAccounts);
+});
+
+document.querySelector("#full").addEventListener("click", function() {
+  filteredAccounts = arrayOfUsers.filter(function(user) {
+    return user.fullname !== undefined;
+  });
+  displayUsers(filteredAccounts);
+});
+
+document.querySelector("#all").addEventListener("click", function() {
+  filteredAccounts = arrayOfUsers;
+  displayUsers(filteredAccounts);
+});
