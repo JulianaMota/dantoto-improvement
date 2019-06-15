@@ -1,9 +1,8 @@
 "use strict";
 //global variables
 let slideIndex = 1;
-const svgdiv = document.querySelector(".gameSize");
-const closeFullBtn = document.querySelector("#closefull-btn");
-const openFullBtn = document.querySelector("#full-btn");
+// let xBtn = null;
+// let expandIcon = null;
 
 //start init function when page loads
 window.addEventListener("DOMContentLoaded", init);
@@ -13,56 +12,77 @@ function init() {
   console.log(svg);
 
   const xBtn = document.querySelector("#closeIcon");
-  console.log(xBtn);
-  // closeFullBtn.style.display = "none";
+  const expandBtn = document.querySelector("#expandIcon");
+  console.log(xBtn, expandBtn);
 
   const prev = document.querySelector(".prev");
   prev.addEventListener("click", goPrev);
   const next = document.querySelector(".next");
   next.addEventListener("click", goNext);
 
-  openFullBtn.addEventListener("click", gamefullscreen);
+  expandBtn.addEventListener("click", gamefullscreen);
   xBtn.addEventListener("click", closeFullscreen);
+
+  xBtn.style.visibility = "hidden";
 
   showSlides(slideIndex);
   dotEvent();
 }
 
 function gamefullscreen() {
-  console.log(svg);
   console.log("working");
-
-  console.log(openFullBtn);
-  console.log(svgdiv);
+  const xBtn = document.querySelector("#closeIcon");
+  const expandBtn = document.querySelector("#expandIcon");
+  console.log(xBtn, expandBtn);
 
   if (svg.requestFullscreen) {
     svg.requestFullscreen();
+    xBtn.style.visibility = "visible";
+    expandBtn.style.visibility = "hidden";
+
     // alert("change for landscape for a better visualizationof the game");
   } else if (svg.mozRequestFullScreen) {
     /* Firefox */
     svg.mozRequestFullScreen();
+    xBtn.style.visibility = "visible";
+    expandBtn.style.visibility = "hidden";
   } else if (svg.webkitRequestFullscreen) {
     /* Chrome, Safari & Opera */
     svg.webkitRequestFullscreen();
+    xBtn.style.visibility = "visible";
+    expandBtn.style.visibility = "hidden";
   } else if (svg.msRequestFullscreen) {
     /* IE/Edge */
     svg.msRequestFullscreen();
+    xBtn.style.visibility = "visible";
+    expandBtn.style.visibility = "hidden";
   }
 }
 
 function closeFullscreen() {
-  console.log(closeFullBtn);
+  const xBtn = document.querySelector("#closeIcon");
+  const expandBtn = document.querySelector("#expandIcon");
+  console.log(xBtn, expandBtn);
+
   if (document.exitFullscreen) {
     document.exitFullscreen();
+    xBtn.style.visibility = "hidden";
+    expandBtn.style.visibility = "visible";
   } else if (document.mozCancelFullScreen) {
     /* Firefox */
     document.mozCancelFullScreen();
+    xBtn.style.visibility = "hidden";
+    expandBtn.style.visibility = "visible";
   } else if (document.webkitExitFullscreen) {
     /* Chrome, Safari and Opera */
     document.webkitExitFullscreen();
+    xBtn.style.visibility = "hidden";
+    expandBtn.style.visibility = "visible";
   } else if (document.msExitFullscreen) {
     /* IE/Edge */
     document.msExitFullscreen();
+    xBtn.style.visibility = "hidden";
+    expandBtn.style.visibility = "visible";
   }
 }
 

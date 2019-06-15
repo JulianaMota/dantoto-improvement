@@ -591,10 +591,19 @@ header aside ul a {
   transform: translateX(96%) translateY(10px) scale(0.3);
   fill: #da5713;
   cursor: pointer;
+  transition: fill 0.3s;
 }
 
-#main-onboarding #modal .slideshow-container article .gameSize svg #closeIcon:hover {
+#main-onboarding #modal .slideshow-container article .gameSize svg #closeIcon:hover,
+#main-onboarding #modal .slideshow-container article .gameSize svg #expandIcon:hover {
   fill: #000;
+}
+
+#main-onboarding #modal .slideshow-container article .gameSize svg #expandIcon {
+  transform: translateX(95%) translateY(10px) scale(0.4);
+  fill: #da5713;
+  cursor: pointer;
+  transition: fill 0.3s;
 }
 
 #main-onboarding #modal .slideshow-container article div {
@@ -906,8 +915,7 @@ header aside ul a {
   #main-onboarding #modal .slideshow-container article .gameSize {
     width: 70vw;
     background-color: transparent;
-    display: grid;
-    grid-template: 3fr 1fr /1fr;
+    display: flex;
   }
   #main-onboarding #modal .slideshow-container article .gameSize svg {
     align-self: center;
@@ -916,9 +924,11 @@ header aside ul a {
     height: 20vh;
     box-sizing: border-box;
   }
-  #main-onboarding #modal .slideshow-container article .gameSize button {
-    align-self: center;
-    height: 7vh;
+  #main-onboarding #modal .slideshow-container article .gameSize svg #closeIcon {
+    transform: translateX(94%) translateY(10px) scale(0.5);
+  }
+  #main-onboarding #modal .slideshow-container article .gameSize svg #expandIcon {
+    transform: translateX(94%) translateY(10px) scale(0.5);
   }
   #main-onboarding #modal .slideshow-container article div {
     height: 55vh;
@@ -957,27 +967,21 @@ header aside ul a {
   }
   #main-onboarding #modal {
     padding-top: 4vh;
-    /********logo******/
   }
   #main-onboarding #modal .slideshow-container article h1 {
     font-size: 25px;
   }
   #main-onboarding #modal .slideshow-container article .gameSize {
     width: 70vw;
-    background-color: transparent;
-    display: grid;
-    grid-template: 3fr 1fr /1fr;
   }
   #main-onboarding #modal .slideshow-container article .gameSize svg {
-    align-self: center;
-    overflow: hidden;
-    width: 100%;
-    height: 45vh;
-    box-sizing: border-box;
+    height: 50vh;
   }
-  #main-onboarding #modal .slideshow-container article .gameSize button {
-    align-self: center;
-    height: 7vh;
+  #main-onboarding #modal .slideshow-container article .gameSize #closeIcon {
+    transform: translateX(94%) translateY(10px) scale(0.4);
+  }
+  #main-onboarding #modal .slideshow-container article .gameSize #expandIcon {
+    transform: translateX(94%) translateY(10px) scale(0.4);
   }
   #main-onboarding #modal .slideshow-container article div {
     height: 50vh;
@@ -987,25 +991,11 @@ header aside ul a {
     padding: 0 0 5px 0;
   }
   #main-onboarding #modal .slideshow-container article div .pointsSlide-img {
-    width: 200px;
-  }
-  #main-onboarding #modal .slideshow-container article div h2 {
-    font-size: 20px;
+    width: 80px;
   }
   #main-onboarding #modal .slideshow-container article div p {
-    width: 80%;
+    font-size: 12px;
+    width: 100%;
     line-height: 1.4;
-  }
-  #main-onboarding #modal .slideshow-container .arrowSize {
-    width: 20px;
-  }
-  #main-onboarding #modal .slideshow-container .next {
-    right: 3%;
-  }
-  #main-onboarding #modal .slideshow-container .prev {
-    left: 3%;
-  }
-  #main-onboarding #modal section {
-    width: 60%;
   }
 }

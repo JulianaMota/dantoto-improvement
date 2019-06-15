@@ -44,6 +44,32 @@ function loadSVG() {
 
 function animationFallingBoxes() {
   document.querySelector("#playButton").addEventListener("click", () => {
+    console.log(svg);
+    const xBtn = document.querySelector("#closeIcon");
+    const expandBtn = document.querySelector("#expandIcon");
+    console.log(xBtn, expandBtn);
+
+    if (svg.requestFullscreen) {
+      svg.requestFullscreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    } else if (svg.mozRequestFullScreen) {
+      /* Firefox */
+      svg.mozRequestFullScreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    } else if (svg.webkitRequestFullscreen) {
+      /* Chrome, Safari & Opera */
+      svg.webkitRequestFullscreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    } else if (svg.msRequestFullscreen) {
+      /* IE/Edge */
+      svg.msRequestFullscreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    }
+
     document.querySelector("#youWonPlaceholder").innerHTML =
       "YOU WON <span id='pointsPlaceholder'>30</span> POINTS";
 
