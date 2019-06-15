@@ -356,7 +356,7 @@ function activateUser(id) {
   hideModal();
 }
 
-/*---------------------------------------------------------------------filtering---------------------------------------------------------------------------*/
+//filtering
 
 let filteredAccounts = arrayOfUsers;
 let filteredDeactivatedAccounts = arrayOfDeactivated;
@@ -390,3 +390,26 @@ document.querySelector("#all").addEventListener("click", function() {
   displayUsers(filteredAccounts);
   displayDeactivated(arrayOfDeactivated);
 });
+
+//Sorting
+
+document
+  .querySelector("#username-active")
+  .addEventListener("click", sortByUserName);
+
+let sortedUsers = arrayOfUsers;
+displayUsers(sortedUsers);
+console.log(sortedUsers);
+
+function sortByUserName() {
+  function sort(a, b) {
+    if (a.username < b.username) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  sortedUsers.sort(sort);
+  displayUsers(sortedUsers);
+  console.log(sortedUsers);
+}
