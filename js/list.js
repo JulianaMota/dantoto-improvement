@@ -391,15 +391,14 @@ document.querySelector("#all").addEventListener("click", function() {
   displayDeactivated(arrayOfDeactivated);
 });
 
-//Sorting
-
 document
   .querySelector("#username-active")
   .addEventListener("click", sortByUserName);
-
-let sortedUsers = arrayOfUsers;
-displayUsers(sortedUsers);
-//console.log(sortedUsers);
+document.querySelector("#user-wins").addEventListener("click", sortByWins);
+document.querySelector("#user-losses").addEventListener("click", sortByLosses);
+document
+  .querySelector("#user-rating")
+  .addEventListener("click", sortByUserRating);
 
 function sortByUserName() {
   function sort(a, b) {
@@ -409,11 +408,11 @@ function sortByUserName() {
       return 1;
     }
   }
-  sortedUsers.sort(sort);
-  displayUsers(sortedUsers);
-  //console.log(sortedUsers);
+  filteredAccounts.sort(sort);
+  displayUsers(filteredAccounts);
+  console.log(filteredAccounts);
 }
-document.querySelector("#user-wins").addEventListener("click", sortByWins);
+
 function sortByWins() {
   function sort(a, b) {
     if (a.wins < b.wins) {
@@ -422,13 +421,12 @@ function sortByWins() {
       return 1;
     }
   }
-  sortedUsers.sort(sort);
+  filteredAccounts.sort(sort);
 
-  displayUsers(sortedUsers);
-  //console.log(sortedUsers);
+  displayUsers(filteredAccounts);
+  //console.log(filteredAccounts);
 }
 
-document.querySelector("#user-losses").addEventListener("click", sortByLosses);
 function sortByLosses() {
   function sort(a, b) {
     if (a.looses < b.looses) {
@@ -437,16 +435,11 @@ function sortByLosses() {
       return 1;
     }
   }
-  sortedUsers.sort(sort);
+  filteredAccounts.sort(sort);
 
-  displayUsers(sortedUsers);
-  console.log(sortedUsers);
-  console.log(sortByLosses);
+  displayUsers(filteredAccounts);
+  console.log(filteredAccounts);
 }
-
-document
-  .querySelector("#user-rating")
-  .addEventListener("click", sortByUserRating);
 
 function sortByUserRating() {
   function sort(a, b) {
@@ -456,9 +449,80 @@ function sortByUserRating() {
       return 1;
     }
   }
-  sortedUsers.sort(sort);
+  filteredAccounts.sort(sort);
 
-  displayUsers(sortedUsers);
-  console.log(sortedUsers);
-  console.log(sortByLosses);
+  displayUsers(filteredAccounts);
+  console.log(filteredAccounts);
 }
+
+//Sorting
+
+// document
+//   .querySelector("#username-active")
+//   .addEventListener("click", sortByUserName);
+// document.querySelector("#user-wins").addEventListener("click", sortByWins);
+// document.querySelector("#user-losses").addEventListener("click", sortByLosses);
+// document
+//   .querySelector("#user-rating")
+//   .addEventListener("click", sortByUserRating);
+
+// let sortedUsers = arrayOfUsers;
+// displayUsers(sortedUsers);
+// //console.log(sortedUsers);
+
+// function sortByUserName() {
+//   function sort(a, b) {
+//     if (a.username < b.username) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+//   displayUsers(sortedUsers);
+//   //console.log(sortedUsers);
+// }
+
+// function sortByWins() {
+//   function sort(a, b) {
+//     if (a.wins < b.wins) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+
+//   displayUsers(sortedUsers);
+//   //console.log(sortedUsers);
+// }
+
+// function sortByLosses() {
+//   function sort(a, b) {
+//     if (a.looses < b.looses) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+
+//   displayUsers(sortedUsers);
+//   console.log(sortedUsers);
+//   console.log(sortByLosses);
+// }
+
+// function sortByUserRating() {
+//   function sort(a, b) {
+//     if (a.rating < b.rating) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+
+//   displayUsers(sortedUsers);
+//   //console.log(sortedUsers);
+//   console.log(sortByLosses);
+// }

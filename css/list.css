@@ -314,6 +314,23 @@ th:nth-child(5) {
   background-color: rgba(0, 0, 0, 0.63);
 }
 
+/*--------------sorting------------------*/
+
+#username-active:hover,
+#user-wins:hover,
+#user-losses:hover,
+#user-rating:hover {
+  cursor: pointer;
+  text-decoration: overline;
+}
+
+#username-active.active,
+#user-wins:hover:target,
+#user-losses:target,
+#user-rating:target {
+  text-decoration: overline;
+}
+
 /*----------------------modal-----------------*/
 
 /*The Modal from https://www.w3schools.com/howto/howto_css_modals.asp*/
