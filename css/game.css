@@ -753,7 +753,7 @@ main {
 #playAgainButton {
   cursor: pointer;
 }
-#betOnText .cls-2-6 {
+.betOnButton {
   opacity: 0;
 }
 

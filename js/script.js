@@ -11,28 +11,43 @@ function loadSVG() {
         .insertAdjacentHTML("afterbegin", svgdata);
 
       document
-        .querySelector("#playButton")
-        .addEventListener("mouseover", () => {
-          TweenLite.to("#playButton", 0.2, {
-            scale: 0.96,
-            transformOrigin: "50% 50%"
+        .querySelectorAll(
+          "#playButton, .nextButton, #playAgainButton, .startTheRace"
+        )
+        .forEach(element => {
+          element.addEventListener("mouseover", () => {
+            TweenLite.to(element, 0.2, {
+              scale: 0.96,
+              transformOrigin: "50% 50%"
+            });
           });
         });
-      document.querySelector("#playButton").addEventListener("mouseout", () => {
-        TweenLite.to("#playButton", 0.2, {
-          scale: 1,
-          transformOrigin: "50% 50%"
+      document
+        .querySelectorAll(
+          "#playButton, .nextButton, #playAgainButton, .startTheRace"
+        )
+        .forEach(element => {
+          element.addEventListener("mouseout", () => {
+            TweenLite.to(element, 0.2, {
+              scale: 1,
+              transformOrigin: "50% 50%"
+            });
+          });
         });
-      });
+
       animationFallingBoxes();
       animateListOfHorses();
 
       console.log(document.querySelector("#pointsText").textContent);
       if (document.querySelector("#pointsText").textContent == 0) {
-        document.querySelector("#youWonPlaceholder").innerHTML =
-          "Are you sure you don't want to play?";
+        document.querySelector("#youWonPlaceholder").innerHTML = "play now";
+        document.querySelector("#youWonPlaceholder").style.cursor = "pointer";
         document.querySelector("#savePoint").innerHTML =
           "If you play you can win points for the real betting";
+
+        document
+          .querySelector("#youWonPlaceholder")
+          .addEventListener("click", goPrev);
       }
     });
 }
@@ -41,9 +56,10 @@ function loadSVG() {
 
 function animationFallingBoxes() {
   document.querySelector("#playButton").addEventListener("click", () => {
+    document.querySelector("#notPlay").textContent = "";
     document.querySelector("#youWonPlaceholder").innerHTML =
       "YOU WON <span id='pointsPlaceholder'>30</span>";
-
+    document.querySelector("#savePoint").innerHTML = "save your points";
     document.querySelector("#FIRST").classList.add("hide");
     TweenLite.to("#playButton", 1, {
       scale: 0.5
@@ -94,8 +110,9 @@ function animateListOfHorses() {
 
   let allBoxes_a = document.querySelectorAll(".cls-2-4a");
   let textGroup = document.querySelectorAll(".text-group");
-  let textGroupBetOn = document.querySelectorAll("#betOnText .cls-2-6");
+  let textGroupBetOn = document.querySelectorAll(".betOnButton");
 
+  console.log(document.querySelector(".text-group:not(.betOnButton)"));
   let allImageHorses = document.querySelectorAll(
     "#horseImage1, #horseImage2, #horseImage3, #horseImage4"
   );
@@ -105,7 +122,6 @@ function animateListOfHorses() {
     Array.from(allBoxes[i].querySelectorAll("text, path")).forEach(item => {
       item.addEventListener("mouseenter", () => {
         event.preventDefault();
-        console.log(event.target);
         TweenMax.to(allBoxes_a[i], 0.4, {
           scaleY: -1.2,
           y: "1"
@@ -130,7 +146,6 @@ function animateListOfHorses() {
     Array.from(allBoxes[i].querySelectorAll("path, text")).forEach(item => {
       item.addEventListener("mouseleave", () => {
         event.preventDefault();
-        console.log(event.target);
         TweenMax.to(allBoxes_a[i], 0.4, {
           scaleY: 0
         });
@@ -166,10 +181,32 @@ let scoresString = [];
 
 function clickToBet(event) {
   // Create a condition to add event listener only to the elements that  contains an attribute “data – horse”
+  console.log(event.target);
+
   if (event.target.parentElement.parentElement.dataset.horse) {
     // Set the value a variable “chosenHorse” with the value of the “data – horse” attribute
     chosenHorse = event.target.parentElement.parentElement.dataset.horse;
     // horseRace();
+    console.log(event.target);
+
+    document
+      .querySelector(".startTheRace")
+      .addEventListener("click", horseRace);
+    document.querySelector(
+      "#race [data-horse='" + chosenHorse + "']"
+    ).style.opacity = "0.3";
+
+    console.log(
+      chosenHorse,
+      document.querySelector("#race [data-horse='" + chosenHorse + "']")
+    );
+  }
+  if (event.target.parentElement.parentElement.parentElement.dataset.horse) {
+    // Set the value a variable “chosenHorse” with the value of the “data – horse” attribute
+    chosenHorse =
+      event.target.parentElement.parentElement.parentElement.dataset.horse;
+    // horseRace();
+    console.log(event.target);
 
     document
       .querySelector(".startTheRace")
@@ -291,14 +328,17 @@ function resetGame() {
   horses = [];
   scores = [];
   scoresString = [];
-  document.querySelector(
-    "#race [data-horse='" + chosenHorse + "']"
-  ).style.opacity = "0";
 
   document.querySelector(".startTheRace").style.opacity = "1";
   let animateArrayOfHorses = document.querySelectorAll(
     "#white-horse, #brown-white-horse, #black-horse, #brown-horse"
   );
+  TweenMax.to("#lets-race", 1.4, {
+    scale: 1,
+    opacity: 1,
+    transformOrigin: "50% 50%"
+  });
+  document.querySelector("#lets-race").style.opacity = "1";
   for (let i = 0; i < animateArrayOfHorses.length; i++) {
     let element = animateArrayOfHorses[i];
     TweenMax.to(element, 1, {
@@ -400,3 +440,12 @@ function showPoints() {
     }
   }
 }
+
+//swich off music
+
+document.querySelector(".next").addEventListener("click", () => {
+  document.querySelector("#GhostRiders").pause();
+});
+document.querySelector("#gameBox").addEventListener("click", () => {
+  document.querySelector("#GhostRiders").play();
+});

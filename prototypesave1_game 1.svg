@@ -91,11 +91,15 @@
     <g class="orangeBox">
     <path class="cls-2-4a" d="M47.49,313.32H244.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H58.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,47.49,313.32Z"/>
     <path class="cls-2-4b" d="M47.49,313.32H244.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H58.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,47.49,313.32Z"/>
+    <text class="cls-2-6 betOnButton" transform="translate(109.28 299.95)">BET ON <tspan x="-7.8" y="24">PEGASUS</tspan></text>
     <g class="text-group">
     <text class="cls-2-5" transform="translate(58.33 349.36)">1</text>
     <text class="cls-2-6" transform="translate(90.33 337.35)">PEGASUS</text>
-    <text class="cls-2-7" transform="translate(91.33 352.03)">The white light of <tspan x="0" y="13.2">Olympus. </tspan></text>
+    <text class="cls-2-7" transform="translate(91.33 352.03)">The white light of</text>
+    <text class="cls-2-7" transform="translate(91.33 367.03)">Olympus </text>
     </g>
+    <g></g>
+
     </g>
   </g>
   <g id="horse2" data-horse="SCOOBY">
@@ -106,10 +110,12 @@
    <g class="orangeBox">
     <path class="cls-2-4a" d="M290.49,313.32H487.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H301.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,290.49,313.32Z"/>
     <path class="cls-2-4b" d="M290.49,313.32H487.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H301.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,290.49,313.32Z"/>
+    <text class="cls-2-6 betOnButton" transform="translate(352.69 302.04)">BET ON <tspan x="-3.96" y="24">SCOOBY</tspan></text>
     <g class="text-group">
     <text class="cls-2-5" transform="translate(300.33 350.03)">2</text>
     <text class="cls-2-6" transform="translate(335.33 336.35)">SCOOBY</text>
-    <text class="cls-2-8" transform="translate(335.33 351.79)">The fearful horse of the <tspan x="0" y="14.4">West.</tspan></text>
+    <text class="cls-2-8" transform="translate(335.33 351.79)">The fearful horse of the</text>
+    <text class="cls-2-8" transform="translate(335.33 367.03)">West. </text>
     </g>
     </g>
 
@@ -122,10 +128,12 @@
     <g class="orangeBox">
     <path class="cls-2-4a" d="M533.49,313.32H730.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H544.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,533.49,313.32Z"/>
     <path class="cls-2-4b" d="M533.49,313.32H730.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H544.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,533.49,313.32Z"/>
+    <text class="cls-2-6 betOnButton" transform="translate(594.69 302.04)">BET ON <tspan x="-8.42" y="24">INFERNO</tspan></text>
     <g class="text-group">
     <text class="cls-2-5" transform="translate(547.33 351.03)">3</text>
     <text class="cls-2-6" transform="translate(581.33 339.35)">INFERNO</text>
-    <text class="cls-2-8" transform="translate(581.33 353.79)">The underground <tspan x="0" y="14.4" xml:space="preserve">shadow.  </tspan></text>
+    <text class="cls-2-8" transform="translate(581.33 353.79)">The underground</text>
+    <text class="cls-2-8" transform="translate(581.33 353.79)">shadow.</text>
     </g>
     </g>
   </g>
@@ -138,18 +146,17 @@
     <g class="orangeBox">
     <path class="cls-2-4a" d="M776.49,313.32H973.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H787.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,776.49,313.32Z"/>
     <path class="cls-2-4b" d="M776.49,313.32H973.33a0,0,0,0,1,0,0v55a12.7,12.7,0,0,1-12.7,12.7H787.94a11.45,11.45,0,0,1-11.45-11.45V313.32A0,0,0,0,1,776.49,313.32Z"/>
+    <text class="cls-2-6 betOnButton" transform="translate(837.69 302.04)">BET ON <tspan x="6" y="24">SPIRIT</tspan></text>
     <g class="text-group">
     <text class="cls-2-5" transform="translate(785.33 347.03)">4</text>
     <text class="cls-2-6" transform="translate(823.33 335.35)">SPIRIT</text>
-    <text class="cls-2-8" transform="translate(823.33 351.45)">The free spirit of the <tspan x="0" y="14.4" xml:space="preserve">wind  </tspan></text>
+    <text class="cls-2-8" transform="translate(823.33 351.45)">The free spirit of the</text>
+    <text class="cls-2-8" transform="translate(823.33 367.03)">wind.</text>
     </g>
+    
     </g>
   </g>
     <g id="betOnText">
-   <text class="cls-2-6" transform="translate(109.28 299.95)">BET ON <tspan x="-7.8" y="24">PEGASUS</tspan></text>
-   <text class="cls-2-6" transform="translate(352.69 302.04)">BET ON <tspan x="-3.96" y="24">SCOOBY</tspan></text>
-   <text class="cls-2-6" transform="translate(594.69 302.04)">BET ON <tspan x="-8.42" y="24">INFERNO</tspan></text>
-   <text class="cls-2-6" transform="translate(837.69 302.04)">BET ON <tspan x="6" y="24">SPIRIT</tspan></text>
  </g>
   
  
