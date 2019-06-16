@@ -42,6 +42,8 @@ function loadSVG() {
       if (document.querySelector("#pointsText").textContent == 0) {
         document.querySelector("#youWonPlaceholder").innerHTML = "play now";
         document.querySelector("#youWonPlaceholder").style.cursor = "pointer";
+        document.querySelector("section article:nth-child(6) h1").textContent =
+          "THANK YOU!";
         document.querySelector("#savePoint").innerHTML =
           "If you play you can win points for the real betting";
 
@@ -56,10 +58,6 @@ function loadSVG() {
 
 function animationFallingBoxes() {
   document.querySelector("#playButton").addEventListener("click", () => {
-    document.querySelector("#notPlay").textContent = "";
-    document.querySelector("#youWonPlaceholder").innerHTML =
-      "YOU WON <span id='pointsPlaceholder'>30</span>";
-    document.querySelector("#savePoint").innerHTML = "save your points";
     document.querySelector("#FIRST").classList.add("hide");
     TweenLite.to("#playButton", 1, {
       scale: 0.5
@@ -360,6 +358,12 @@ function showScores() {
 }
 
 function showPoints() {
+  document.querySelector("#notPlay").textContent = "";
+  document.querySelector("section article:nth-child(6) h1").textContent =
+    "CONGRATS!";
+  document.querySelector("#youWonPlaceholder").innerHTML =
+    "YOU WON <span id='pointsPlaceholder'>0</span>";
+  document.querySelector("#savePoint").innerHTML = "save your points";
   console.log(chosenHorse);
 
   document
