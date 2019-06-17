@@ -405,8 +405,7 @@ th:nth-child(5) {
   grid-area: area6;
 }
 
-#deactivateButton,
-#activateButton {
+#deactivateButton {
   float: right;
   background-color: #dd642b;
   color: white;
@@ -417,6 +416,14 @@ th:nth-child(5) {
   font-size: 19px;
   line-height: 19px;
   margin: 50px 50px 20px 0;
+}
+
+#activateButton {
+  float: right;
+  background-color: #10c982;
+  color: white;
+  border-style: none;
+  border-radius: 5px;
 }
 
 .modalClose {
