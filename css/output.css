@@ -559,6 +559,7 @@ header aside ul a {
 #main-onboarding #modal .slideshow-container {
   width: 100%;
   position: relative;
+  height: 65vh;
 }
 
 #main-onboarding #modal .slideshow-container article {
@@ -576,30 +577,40 @@ header aside ul a {
 }
 
 #main-onboarding #modal .slideshow-container article .gameSize {
-  width: 70vw;
+  width: 45vw;
   background-color: transparent;
+  padding: 0;
+  display: flex;
 }
 
-#main-onboarding #modal .slideshow-container article .gameSize svg {
+#main-onboarding #modal .slideshow-container article .gameSize section {
+  overflow: hidden;
+  height: fit-content;
+  width: 100%;
+  align-self: center;
+  padding: 0;
+}
+
+#main-onboarding #modal .slideshow-container article .gameSize section svg {
   overflow: hidden;
   width: 100%;
-  height: 50vh;
+  height: auto;
   box-sizing: border-box;
 }
 
-#main-onboarding #modal .slideshow-container article .gameSize svg #closeIcon {
+#main-onboarding #modal .slideshow-container article .gameSize section svg #closeIcon {
   transform: translateX(96%) translateY(10px) scale(0.3);
   fill: #da5713;
   cursor: pointer;
   transition: fill 0.3s;
 }
 
-#main-onboarding #modal .slideshow-container article .gameSize svg #closeIcon:hover,
-#main-onboarding #modal .slideshow-container article .gameSize svg #expandIcon:hover {
+#main-onboarding #modal .slideshow-container article .gameSize section svg #closeIcon:hover,
+#main-onboarding #modal .slideshow-container article .gameSize section svg #expandIcon:hover {
   fill: #000;
 }
 
-#main-onboarding #modal .slideshow-container article .gameSize svg #expandIcon {
+#main-onboarding #modal .slideshow-container article .gameSize section svg #expandIcon {
   transform: translateX(95%) translateY(10px) scale(0.4);
   fill: #da5713;
   cursor: pointer;
@@ -654,7 +665,7 @@ header aside ul a {
   font-size: 14px;
   font-weight: 600;
   line-height: 1.5;
-  width: 100%;
+  width: 90%;
   padding: 10px;
 }
 
@@ -909,6 +920,9 @@ header aside ul a {
   #main-onboarding #modal .logo-dantoto {
     display: none;
   }
+  #main-onboarding #modal .slideshow-container {
+    height: 70vh;
+  }
   #main-onboarding #modal .slideshow-container article h1 {
     font-size: 25px;
   }
@@ -918,10 +932,7 @@ header aside ul a {
     display: flex;
   }
   #main-onboarding #modal .slideshow-container article .gameSize svg {
-    align-self: center;
     overflow: hidden;
-    width: 100%;
-    height: 20vh;
     box-sizing: border-box;
   }
   #main-onboarding #modal .slideshow-container article .gameSize svg #closeIcon {
@@ -968,14 +979,17 @@ header aside ul a {
   #main-onboarding #modal {
     padding-top: 4vh;
   }
+  #main-onboarding #modal .slideshow-container {
+    height: 75vh;
+  }
   #main-onboarding #modal .slideshow-container article h1 {
     font-size: 25px;
   }
   #main-onboarding #modal .slideshow-container article .gameSize {
-    width: 70vw;
+    width: 60vw;
   }
   #main-onboarding #modal .slideshow-container article .gameSize svg {
-    height: 50vh;
+    height: auto;
   }
   #main-onboarding #modal .slideshow-container article .gameSize #closeIcon {
     transform: translateX(94%) translateY(10px) scale(0.4);

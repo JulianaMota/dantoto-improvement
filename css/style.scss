@@ -552,7 +552,7 @@ header {
     .slideshow-container {
       width: 100%;
       position: relative;
-
+      height: 65vh;
       article {
         margin: auto;
 
@@ -567,28 +567,38 @@ header {
         }
 
         .gameSize {
-          width: 70vw;
+          width: 45vw;
           background-color: transparent;
-          svg {
+          padding: 0;
+          display: flex;
+
+          section {
             overflow: hidden;
+            height: fit-content;
             width: 100%;
-            height: 50vh;
-            box-sizing: border-box;
-            #closeIcon {
-              transform: translateX(96%) translateY(10px) scale(0.3);
-              fill: $color-orange;
-              cursor: pointer;
-              transition: fill 0.3s;
-            }
-            #closeIcon:hover,
-            #expandIcon:hover {
-              fill: $color-black;
-            }
-            #expandIcon {
-              transform: translateX(95%) translateY(10px) scale(0.4);
-              fill: $color-orange;
-              cursor: pointer;
-              transition: fill 0.3s;
+            align-self: center;
+            padding: 0;
+            svg {
+              overflow: hidden;
+              width: 100%;
+              height: auto;
+              box-sizing: border-box;
+              #closeIcon {
+                transform: translateX(96%) translateY(10px) scale(0.3);
+                fill: $color-orange;
+                cursor: pointer;
+                transition: fill 0.3s;
+              }
+              #closeIcon:hover,
+              #expandIcon:hover {
+                fill: $color-black;
+              }
+              #expandIcon {
+                transform: translateX(95%) translateY(10px) scale(0.4);
+                fill: $color-orange;
+                cursor: pointer;
+                transition: fill 0.3s;
+              }
             }
           }
         }
@@ -623,17 +633,6 @@ header {
               padding: 0;
             }
           }
-          // //slide div h2 congrats style
-          // // .pointsSlide-h2 {
-          // //   font-weight: 100;
-          // //   font-size: $font-subtitle;
-          // //   width: 60%;
-          // //   background-color: $color-orange;
-          // //   align-items: center;
-          // //   justify-self: center;
-          // //   padding: 15px;
-          // //   border-radius: 5px;
-          // }
           span {
             justify-self: center;
             border-top: 1px solid $color-black;
@@ -646,7 +645,7 @@ header {
             font-size: $font-size-text;
             font-weight: 600;
             line-height: 1.5;
-            width: 100%;
+            width: 90%;
             padding: 10px;
           }
 
@@ -915,6 +914,7 @@ header {
         display: none;
       }
       .slideshow-container {
+        height: 70vh;
         article {
           h1 {
             font-size: 25px;
@@ -927,12 +927,8 @@ header {
             display: flex;
 
             svg {
-              align-self: center;
               overflow: hidden;
-              width: 100%;
-              height: 20vh;
               box-sizing: border-box;
-
               #closeIcon {
                 transform: translateX(94%) translateY(10px) scale(0.5);
               }
@@ -945,7 +941,6 @@ header {
           div {
             height: 55vh;
             width: 60vw;
-            $width: 60vw;
 
             .pointsSlide-img {
               width: 200px;
@@ -994,16 +989,16 @@ header {
       padding-top: 4vh;
 
       .slideshow-container {
+        height: 75vh;
         article {
           h1 {
             font-size: 25px;
           }
-          //game div
 
           .gameSize {
-            width: 70vw;
+            width: 60vw;
             svg {
-              height: 50vh;
+              height: auto;
             }
             #closeIcon {
               transform: translateX(94%) translateY(10px) scale(0.4);

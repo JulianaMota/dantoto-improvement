@@ -24,21 +24,41 @@ function init() {
 
   xBtn.style.visibility = "hidden";
 
-  // const slides = document.querySelectorAll(".slides");
-  // console.log(slides);
-  // slides.forEach(slide => {
-  //   // console.log(slide);
-  //   slide.addEventListener("touchstart", moveSlide);
-  // });
+  const slides = document.querySelectorAll(".slides");
+  console.log(slides);
+  slides.forEach(slide => {
+    // console.log(slide);
+    slide.addEventListener("touchstart", startSlide);
+    slide.addEventListener("touchmove", moveSlide);
+    slide.addEventListener("touchout", outSlide);
+  });
 
   showSlides(slideIndex);
   dotEvent();
 }
 
+let startX;
+let endX;
+
 //touch and move slide
-// function moveSlide(evt) {
-//   console.log(evt);
-// }
+function startSlide(evt) {
+  console.log(evt.touches[0].clientX);
+  startX = evt.touches[0].clientX;
+}
+function moveSlide(evt) {
+  const touch = evt.touches[0];
+  console.log(touch);
+  const change = startX - touch.clientX;
+  console.log(change);
+  if (change < 20) {
+    plus(1);
+  } else if (change > 0) {
+    plus(-1);
+  }
+}
+function outSlide(evt) {
+  endX = evt.touches[0].clientX;
+}
 
 function gamefullscreen() {
   console.log("working");
