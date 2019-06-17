@@ -41,9 +41,26 @@ function makeObject(usersList) {
     newUserObject.photo = "https://dantoto-eb44.restdb.io/media/" + user.Photo;
     newUserObject.username = user.Username;
     newUserObject.password = user.Password;
-    newUserObject.wins = user.Wins;
-    newUserObject.looses = user.Looses;
-    newUserObject.rating = user.Rating;
+
+    /*The if statements below are used to provide correct functionig og numeric sorting. The data passed to object from JSON are considered as "text" even if they contain numeric data. "parseFloat" lets to change the data from text to numbers without changing the numbers with fractions to integers. (The numeric data can't be sorted correctly if they are seen as text not numbers.)*/
+    if (user.Wins === undefined) {
+      newUserObject.wins = 0;
+    } else {
+      newUserObject.wins = parseFloat(user.Wins);
+    }
+
+    if (user.Looses === undefined) {
+      newUserObject.looses = 0;
+    } else {
+      newUserObject.looses = parseFloat(user.Looses);
+    }
+
+    if (user.Rating === undefined) {
+      newUserObject.rating = 0;
+    } else {
+      newUserObject.rating = parseFloat(user.Rating);
+    }
+
     newUserObject.fullname = user.Fullname;
     newUserObject.email = user.Email;
     newUserObject.telephone = user.Telephone;
@@ -79,33 +96,9 @@ function displayUsers(arrayOfUsers) {
       clone.querySelector(".photoTable").src = user.photo;
     }
     clone.querySelector(".name").textContent = user.username;
-
-    if (
-      user.wins === undefined ||
-      user.wins === "https://dantoto-eb44.restdb.io/media/undefined"
-    ) {
-      clone.querySelector(".wins").textContent = "0";
-    } else {
-      clone.querySelector(".wins").textContent = user.wins;
-    }
-
-    if (
-      user.looses === undefined ||
-      user.looses === "https://dantoto-eb44.restdb.io/media/undefined"
-    ) {
-      clone.querySelector(".looses").textContent = "0";
-    } else {
-      clone.querySelector(".looses").textContent = user.looses;
-    }
-
-    if (
-      user.rating === undefined ||
-      user.rating === "https://dantoto-eb44.restdb.io/media/undefined"
-    ) {
-      clone.querySelector(".rating").textContent = "0";
-    } else {
-      clone.querySelector(".rating").textContent = user.rating;
-    }
+    clone.querySelector(".wins").textContent = user.wins;
+    clone.querySelector(".looses").textContent = user.looses;
+    clone.querySelector(".rating").textContent = user.rating;
 
     let removeButtonId = "removeButton" + user.id;
     clone.querySelector(".removeButton").id = removeButtonId;
@@ -177,32 +170,9 @@ function displayDeactivated(deactivatedList) {
       }
     }
 
-    if (
-      user.wins === undefined ||
-      user.wins === "https://dantoto-eb44.restdb.io/media/undefined"
-    ) {
-      clone.querySelector(".wins").textContent = "0";
-    } else {
-      clone.querySelector(".wins").textContent = user.wins;
-    }
-
-    if (
-      user.looses === undefined ||
-      user.looses === "https://dantoto-eb44.restdb.io/media/undefined"
-    ) {
-      clone.querySelector(".looses").textContent = "0";
-    } else {
-      clone.querySelector(".looses").textContent = user.looses;
-    }
-
-    if (
-      user.rating === undefined ||
-      user.rating === "https://dantoto-eb44.restdb.io/media/undefined"
-    ) {
-      clone.querySelector(".rating").textContent = "0";
-    } else {
-      clone.querySelector(".rating").textContent = user.rating;
-    }
+    clone.querySelector(".wins").textContent = user.wins;
+    clone.querySelector(".looses").textContent = user.looses;
+    clone.querySelector(".rating").textContent = user.rating;
 
     clone.querySelector(".name").textContent = user.username;
     let removeButtonId = "removeButton" + user.id;
@@ -413,6 +383,7 @@ function sortByUserName() {
   filteredAccounts.sort(sort);
   displayUsers(filteredAccounts);
   console.log(filteredAccounts);
+  displayDeactivated(arrayOfDeactivated);
 }
 
 function sortByWins() {
@@ -427,6 +398,7 @@ function sortByWins() {
 
   displayUsers(filteredAccounts);
   //console.log(filteredAccounts);
+  displayDeactivated(arrayOfDeactivated);
 }
 
 function sortByLosses() {
@@ -441,6 +413,7 @@ function sortByLosses() {
 
   displayUsers(filteredAccounts);
   console.log(filteredAccounts);
+  displayDeactivated(arrayOfDeactivated);
 }
 
 function sortByUserRating() {
@@ -455,4 +428,5 @@ function sortByUserRating() {
 
   displayUsers(filteredAccounts);
   console.log(filteredAccounts);
+  displayDeactivated(arrayOfDeactivated);
 }
