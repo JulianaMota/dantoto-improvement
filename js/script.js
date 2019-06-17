@@ -49,23 +49,23 @@ function animationFallingBoxes() {
     const expandBtn = document.querySelector("#expandIcon");
     console.log(xBtn, expandBtn);
 
-    if (svg.requestFullscreen) {
-      svg.requestFullscreen();
+    if (svgDiv.requestFullscreen) {
+      svgDiv.requestFullscreen();
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
-    } else if (svg.mozRequestFullScreen) {
+    } else if (svgDiv.mozRequestFullScreen) {
       /* Firefox */
-      svg.mozRequestFullScreen();
+      svgDiv.mozRequestFullScreen();
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
-    } else if (svg.webkitRequestFullscreen) {
+    } else if (svgDiv.webkitRequestFullscreen) {
       /* Chrome, Safari & Opera */
-      svg.webkitRequestFullscreen();
+      svgDiv.webkitRequestFullscreen();
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
-    } else if (svg.msRequestFullscreen) {
+    } else if (svgDiv.msRequestFullscreen) {
       /* IE/Edge */
-      svg.msRequestFullscreen();
+      svgDiv.msRequestFullscreen();
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
     }

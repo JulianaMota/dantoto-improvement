@@ -1,8 +1,7 @@
 "use strict";
 //global variables
 let slideIndex = 1;
-// let xBtn = null;
-// let expandIcon = null;
+const svgDiv = document.querySelector(".gameSize");
 
 //start init function when page loads
 window.addEventListener("DOMContentLoaded", init);
@@ -25,9 +24,21 @@ function init() {
 
   xBtn.style.visibility = "hidden";
 
+  // const slides = document.querySelectorAll(".slides");
+  // console.log(slides);
+  // slides.forEach(slide => {
+  //   // console.log(slide);
+  //   slide.addEventListener("touchstart", moveSlide);
+  // });
+
   showSlides(slideIndex);
   dotEvent();
 }
+
+//touch and move slide
+// function moveSlide(evt) {
+//   console.log(evt);
+// }
 
 function gamefullscreen() {
   console.log("working");
@@ -35,25 +46,24 @@ function gamefullscreen() {
   const expandBtn = document.querySelector("#expandIcon");
   console.log(xBtn, expandBtn);
 
-  if (svg.requestFullscreen) {
-    svg.requestFullscreen();
+  if (svgDiv.requestFullscreen) {
+    svgDiv.requestFullscreen();
     xBtn.style.visibility = "visible";
     expandBtn.style.visibility = "hidden";
-
     // alert("change for landscape for a better visualizationof the game");
-  } else if (svg.mozRequestFullScreen) {
+  } else if (svgDiv.mozRequestFullScreen) {
     /* Firefox */
-    svg.mozRequestFullScreen();
+    svgDiv.mozRequestFullScreen();
     xBtn.style.visibility = "visible";
     expandBtn.style.visibility = "hidden";
-  } else if (svg.webkitRequestFullscreen) {
+  } else if (svgDiv.webkitRequestFullscreen) {
     /* Chrome, Safari & Opera */
-    svg.webkitRequestFullscreen();
+    svgDiv.webkitRequestFullscreen();
     xBtn.style.visibility = "visible";
     expandBtn.style.visibility = "hidden";
-  } else if (svg.msRequestFullscreen) {
+  } else if (svgDiv.msRequestFullscreen) {
     /* IE/Edge */
-    svg.msRequestFullscreen();
+    svgDiv.msRequestFullscreen();
     xBtn.style.visibility = "visible";
     expandBtn.style.visibility = "hidden";
   }
