@@ -312,6 +312,9 @@ function horseRace() {
               document.querySelector(".cls-4-1").classList.add("hide");
               document.querySelector("#FIRST").classList.remove("hide");
               scorseBoxes[position].style.opacity = "0.31";
+              document.querySelector(
+                "#race [data-horse='" + chosenHorse + "']"
+              ).style.opacity = "0";
               resetGame();
 
               // document.location.reload();
@@ -399,7 +402,7 @@ function showPoints() {
     "#Bell1, #Bell2, #Bell3, #Bell4, #Bell5"
   );
 
-  for (let i = 0; i < 5 - position - 1 + 1; i++) {
+  for (let i = 0; i < 5 - position; i++) {
     TweenMax.to(horseFeet[i], 0.5, {
       delay: i,
       fill: "#f7931e",
@@ -409,7 +412,7 @@ function showPoints() {
     });
   }
   TweenMax.from("#pointsText", 0.5, {
-    delay: 5 - position - 1 + 1,
+    delay: 5 - position,
     scale: 5,
     transformOrigin: "50% 50%",
     opacity: 0,
@@ -421,6 +424,8 @@ function showPoints() {
 
   let scoresParents = Array.from(document.querySelectorAll(".scoresParent"));
   let scorseBoxes = Array.from(document.querySelectorAll(".scorseBox"));
+
+  console.log(document.querySelectorAll(".scorseBox"), scorseBoxes);
   // box animatiom
   TweenMax.to(scorseBoxes[position], 0.5, {
     attr: { y: 258 }
