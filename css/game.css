@@ -753,3 +753,7 @@ main {
 #playAgainButton {
   cursor: pointer;
 }
+section article #gameBox {
+  display: flex;
+  align-items: center;
+}
