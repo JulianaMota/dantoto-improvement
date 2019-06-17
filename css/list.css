@@ -262,11 +262,17 @@ th:nth-child(5) {
 }
 
 /*--------------filter buttons----------------*/
+
 #box {
   display: grid;
-
   grid-template-columns: 190px 190px 190px;
-  grid-template-rows: 2px 50px;
+  grid-template-rows: 50px 50px;
+}
+
+.filter {
+  color: #e4dada;
+  grid-column: 1/2;
+  grid-row: 1/2;
 }
 
 #soft {
@@ -312,6 +318,23 @@ th:nth-child(5) {
 #full:hover,
 #all:hover {
   background-color: rgba(0, 0, 0, 0.63);
+}
+
+/*--------------sorting------------------*/
+
+#username-active:hover,
+#user-wins:hover,
+#user-losses:hover,
+#user-rating:hover {
+  cursor: pointer;
+  text-decoration: overline;
+}
+
+#username-active.active,
+#user-wins:hover:target,
+#user-losses:target,
+#user-rating:target {
+  text-decoration: overline;
 }
 
 /*----------------------modal-----------------*/

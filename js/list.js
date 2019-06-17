@@ -342,6 +342,7 @@ function deactivateUser(id) {
   displayUsers(arrayOfUsers);
   hideModal();
   displayDeactivated(arrayOfDeactivated);
+
   hideModal();
 }
 
@@ -355,26 +356,173 @@ function activateUser(id) {
   hideModal();
 }
 
-/*---------------------------------------------------------------------filtering---------------------------------------------------------------------------*/
+//filtering
 
 let filteredAccounts = arrayOfUsers;
-console.log(filteredAccounts);
+let filteredDeactivatedAccounts = arrayOfDeactivated;
+//console.log(filteredAccounts);
+//console.log(filteredDeactivatedAccounts);
 
 document.querySelector("#soft").addEventListener("click", function() {
+  filteredDeactivatedAccounts = arrayOfDeactivated.filter(function(user) {
+    return user.fullname === undefined;
+  });
   filteredAccounts = arrayOfUsers.filter(function(user) {
     return user.fullname === undefined;
   });
   displayUsers(filteredAccounts);
+  displayDeactivated(filteredDeactivatedAccounts);
 });
 
 document.querySelector("#full").addEventListener("click", function() {
+  filteredDeactivatedAccounts = arrayOfDeactivated.filter(function(user) {
+    return user.fullname !== undefined;
+  });
   filteredAccounts = arrayOfUsers.filter(function(user) {
     return user.fullname !== undefined;
   });
   displayUsers(filteredAccounts);
+  displayDeactivated(filteredDeactivatedAccounts);
 });
 
 document.querySelector("#all").addEventListener("click", function() {
   filteredAccounts = arrayOfUsers;
   displayUsers(filteredAccounts);
+  displayDeactivated(arrayOfDeactivated);
 });
+
+document
+  .querySelector("#username-active")
+  .addEventListener("click", sortByUserName);
+document.querySelector("#user-wins").addEventListener("click", sortByWins);
+document.querySelector("#user-losses").addEventListener("click", sortByLosses);
+document
+  .querySelector("#user-rating")
+  .addEventListener("click", sortByUserRating);
+
+function sortByUserName() {
+  function sort(a, b) {
+    if (a.username < b.username) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  filteredAccounts.sort(sort);
+  displayUsers(filteredAccounts);
+  console.log(filteredAccounts);
+}
+
+function sortByWins() {
+  function sort(a, b) {
+    if (a.wins < b.wins) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  filteredAccounts.sort(sort);
+
+  displayUsers(filteredAccounts);
+  //console.log(filteredAccounts);
+}
+
+function sortByLosses() {
+  function sort(a, b) {
+    if (a.looses < b.looses) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  filteredAccounts.sort(sort);
+
+  displayUsers(filteredAccounts);
+  console.log(filteredAccounts);
+}
+
+function sortByUserRating() {
+  function sort(a, b) {
+    if (a.rating < b.rating) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
+  filteredAccounts.sort(sort);
+
+  displayUsers(filteredAccounts);
+  console.log(filteredAccounts);
+}
+
+//Sorting
+
+// document
+//   .querySelector("#username-active")
+//   .addEventListener("click", sortByUserName);
+// document.querySelector("#user-wins").addEventListener("click", sortByWins);
+// document.querySelector("#user-losses").addEventListener("click", sortByLosses);
+// document
+//   .querySelector("#user-rating")
+//   .addEventListener("click", sortByUserRating);
+
+// let sortedUsers = arrayOfUsers;
+// displayUsers(sortedUsers);
+// //console.log(sortedUsers);
+
+// function sortByUserName() {
+//   function sort(a, b) {
+//     if (a.username < b.username) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+//   displayUsers(sortedUsers);
+//   //console.log(sortedUsers);
+// }
+
+// function sortByWins() {
+//   function sort(a, b) {
+//     if (a.wins < b.wins) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+
+//   displayUsers(sortedUsers);
+//   //console.log(sortedUsers);
+// }
+
+// function sortByLosses() {
+//   function sort(a, b) {
+//     if (a.looses < b.looses) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+
+//   displayUsers(sortedUsers);
+//   console.log(sortedUsers);
+//   console.log(sortByLosses);
+// }
+
+// function sortByUserRating() {
+//   function sort(a, b) {
+//     if (a.rating < b.rating) {
+//       return -1;
+//     } else {
+//       return 1;
+//     }
+//   }
+//   sortedUsers.sort(sort);
+
+//   displayUsers(sortedUsers);
+//   //console.log(sortedUsers);
+//   console.log(sortByLosses);
+// }
