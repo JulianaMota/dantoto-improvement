@@ -8,29 +8,30 @@ window.addEventListener("DOMContentLoaded", init);
 
 //init funtion with arrow eventlistners and call funtions for slideshow and dot event
 function init() {
-  console.log(svg);
+  // console.log(svg);
 
   const xBtn = document.querySelector("#closeIcon");
   const expandBtn = document.querySelector("#expandIcon");
-  console.log(xBtn, expandBtn);
+  // console.log(xBtn, expandBtn);
 
+  //arrows swiping event
   const prev = document.querySelector(".prev");
   prev.addEventListener("click", goPrev);
   const next = document.querySelector(".next");
   next.addEventListener("click", goNext);
 
+  //icons of fullcreen events
   expandBtn.addEventListener("click", gamefullscreen);
   xBtn.addEventListener("click", closeFullscreen);
-
   xBtn.style.visibility = "hidden";
 
+  // touch events for mobile
   const slides = document.querySelectorAll(".slides");
-  console.log(slides);
+  // console.log(slides);
   slides.forEach(slide => {
     // console.log(slide);
     slide.addEventListener("touchstart", startSlide);
-    slide.addEventListener("touchmove", moveSlide);
-    slide.addEventListener("touchout", outSlide);
+    slide.addEventListener("touchend", outSlide);
   });
 
   showSlides(slideIndex);
@@ -42,29 +43,35 @@ let endX;
 
 //touch and move slide
 function startSlide(evt) {
-  console.log(evt.touches[0].clientX);
   startX = evt.touches[0].clientX;
-}
-function moveSlide(evt) {
-  const touch = evt.touches[0];
-  console.log(touch);
-  const change = startX - touch.clientX;
-  console.log(change);
-  if (change < 20) {
-    plus(1);
-  } else if (change > 0) {
-    plus(-1);
-  }
+  // console.log(startX);
 }
 function outSlide(evt) {
-  endX = evt.touches[0].clientX;
+  endX = startX - evt.changedTouches[0].clientX;
+  console.log(endX);
+  console.log(slideIndex);
+  const screenThird = screen.width / 3;
+  console.log(screenThird);
+  if (endX > screenThird && endX > 0) {
+    plus(1);
+  }
+  if (slideIndex === 7) {
+    document.querySelector("#main-onboarding section").style.display = "none";
+  }
+  if (endX < `-${screenThird}` && endX < 0) {
+    if (slideIndex === 1) {
+    } else {
+      plus(-1);
+    }
+  }
 }
 
+//game fullscreen
 function gamefullscreen() {
-  console.log("working");
+  // console.log("working");
   const xBtn = document.querySelector("#closeIcon");
   const expandBtn = document.querySelector("#expandIcon");
-  console.log(xBtn, expandBtn);
+  // console.log(xBtn, expandBtn);
 
   if (svgDiv.requestFullscreen) {
     svgDiv.requestFullscreen();
@@ -119,7 +126,7 @@ function closeFullscreen() {
 //event listner for dots to conect with weach slide
 function dotEvent() {
   const dots = document.querySelectorAll(".dot");
-  console.log(dots[1]);
+  // console.log(dots[1]);
   dots[0].addEventListener("click", dot => {
     currenSlide(1);
   });
@@ -221,7 +228,7 @@ function showSlides(index) {
 
   //change arrow at end
   if (slideIndex === 6) {
-    console.log("ae");
+    // console.log("ae");
     document.querySelector(".next").addEventListener("click", lastClick);
     document.querySelector(".next").removeEventListener("click", goNext);
   } else {
