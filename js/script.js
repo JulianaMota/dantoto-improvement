@@ -44,26 +44,36 @@ function loadSVG() {
 
 function animationFallingBoxes() {
   document.querySelector("#playButton").addEventListener("click", () => {
+    // svgDiv.querySelector("svg").style.alignSelf = "center";
+
     console.log(svg);
     const xBtn = document.querySelector("#closeIcon");
     const expandBtn = document.querySelector("#expandIcon");
     console.log(xBtn, expandBtn);
 
     if (svgDiv.requestFullscreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
       svgDiv.requestFullscreen();
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
     } else if (svgDiv.mozRequestFullScreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
       /* Firefox */
       svgDiv.mozRequestFullScreen();
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
     } else if (svgDiv.webkitRequestFullscreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
       /* Chrome, Safari & Opera */
       svgDiv.webkitRequestFullscreen();
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
     } else if (svgDiv.msRequestFullscreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
       /* IE/Edge */
       svgDiv.msRequestFullscreen();
       xBtn.style.visibility = "visible";
