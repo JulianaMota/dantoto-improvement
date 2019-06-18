@@ -193,6 +193,12 @@ header nav ul li a svg {
   fill: #fff;
 }
 
+header nav ul li a:hover,
+header nav ul li svg:hover {
+  color: #000;
+  fill: #000;
+}
+
 header aside {
   justify-self: flex-end;
   align-self: center;
@@ -211,6 +217,10 @@ header aside ul a {
   color: #fff;
 }
 
+header aside ul a:hover {
+  color: #000;
+}
+
 /********logo******/
 .logo-dantoto {
   padding: 20px;
@@ -223,6 +233,11 @@ header aside ul a {
 .logo-dantoto p {
   font-size: 10px;
   color: #fff;
+}
+
+.logo-dantoto:hover {
+  opacity: 0.6;
+  transition: 0.3s;
 }
 
 /********main******/
@@ -914,7 +929,7 @@ header aside ul a {
   /********main onboarding mobile******/
   #main-onboarding #modal {
     padding-top: 8vh;
-    grid-template: auto 4fr 1fr /1fr;
+    grid-template: auto 2fr 1fr /1fr;
     /********logo******/
   }
   #main-onboarding #modal .logo-dantoto {
@@ -977,13 +992,14 @@ header aside ul a {
     justify-self: left;
   }
   #main-onboarding #modal {
-    padding-top: 4vh;
+    padding-top: 0;
   }
   #main-onboarding #modal .slideshow-container {
     height: 75vh;
+    padding-bottom: 10px;
   }
   #main-onboarding #modal .slideshow-container article h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
   #main-onboarding #modal .slideshow-container article .gameSize {
     width: 60vw;
@@ -998,7 +1014,8 @@ header aside ul a {
     transform: translateX(94%) translateY(10px) scale(0.4);
   }
   #main-onboarding #modal .slideshow-container article div {
-    height: 50vh;
+    min-height: 50vh;
+    padding: 10px;
   }
   #main-onboarding #modal .slideshow-container article div img {
     width: 50px;

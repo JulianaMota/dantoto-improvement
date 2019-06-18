@@ -191,6 +191,11 @@ header {
             fill: $color-white;
           }
         }
+        a:hover,
+        svg:hover {
+          color: $color-black;
+          fill: $color-black;
+        }
       }
     }
   }
@@ -209,6 +214,9 @@ header {
       a {
         color: $color-white;
       }
+      a:hover {
+        color: $color-black;
+      }
     }
   }
 }
@@ -223,6 +231,10 @@ header {
     font-size: $font-size-small;
     color: $color-white;
   }
+}
+.logo-dantoto:hover {
+  opacity: 0.6;
+  transition: 0.3s;
 }
 
 /********main******/
@@ -908,7 +920,7 @@ header {
   #main-onboarding {
     #modal {
       padding-top: 8vh;
-      grid-template: auto 4fr 1fr /1fr;
+      grid-template: auto 2fr 1fr /1fr;
       /********logo******/
       .logo-dantoto {
         display: none;
@@ -986,13 +998,14 @@ header {
   //main onboarding moblie landscape
   #main-onboarding {
     #modal {
-      padding-top: 4vh;
+      padding-top: 0;
 
       .slideshow-container {
         height: 75vh;
+        padding-bottom: 10px;
         article {
           h1 {
-            font-size: 25px;
+            font-size: 20px;
           }
 
           .gameSize {
@@ -1009,8 +1022,8 @@ header {
           }
           //general div
           div {
-            height: 50vh;
-
+            min-height: 50vh;
+            padding: 10px;
             img {
               width: 50px;
               padding: 0 0 5px 0;
