@@ -1,7 +1,6 @@
 {
   "name": "website",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -24,5 +23,6 @@
     "cssnano": "^4.1.10",
     "minify": "^4.1.1",
     "node-sass": "^4.12.0"
-  }
+  },
+  "description": ""
 }
