@@ -191,6 +191,11 @@ header {
             fill: $color-white;
           }
         }
+        a:hover,
+        svg:hover {
+          color: $color-black;
+          fill: $color-black;
+        }
       }
     }
   }
@@ -209,6 +214,9 @@ header {
       a {
         color: $color-white;
       }
+      a:hover {
+        color: $color-black;
+      }
     }
   }
 }
@@ -223,6 +231,10 @@ header {
     font-size: $font-size-small;
     color: $color-white;
   }
+}
+.logo-dantoto:hover {
+  opacity: 0.6;
+  transition: 0.3s;
 }
 
 /********main******/
@@ -552,7 +564,7 @@ header {
     .slideshow-container {
       width: 100%;
       position: relative;
-
+      height: 65vh;
       article {
         margin: auto;
 
@@ -565,14 +577,44 @@ header {
           padding-bottom: 20px;
           text-align: center;
         }
-        //game onboarding box
+
         .gameSize {
-          width: 70vw;
+          width: 45vw;
           background-color: transparent;
-          svg {
+          padding: 0;
+          display: flex;
+
+          section {
+            overflow: hidden;
+            height: fit-content;
             width: 100%;
-            height: 50vh;
-            box-sizing: border-box;
+            align-self: center;
+            padding: 0;
+            svg {
+              overflow: hidden;
+              width: 100%;
+              height: auto;
+              box-sizing: border-box;
+              #closeIcon {
+                transform: translateX(96%) translateY(10px) scale(0.3);
+                fill: $color-orange;
+                cursor: pointer;
+                transition: fill 0.3s;
+              }
+              #closeIcon:hover,
+              #expandIcon:hover {
+                fill: $color-black;
+              }
+              #expandIcon {
+                transform: translateX(95%) translateY(10px) scale(0.4);
+                fill: $color-orange;
+                cursor: pointer;
+                transition: fill 0.3s;
+              }
+              .squareFill {
+                opacity: 0;
+              }
+            }
           }
         }
         //general onboading white box
@@ -583,14 +625,14 @@ header {
           border-radius: 5px;
           display: grid;
           padding: 20px;
-          grid-template: 1fr auto auto 2fr / auto;
+          grid-template: auto auto auto 2fr / auto;
           img {
             padding: 20px 0;
             width: 100px;
             justify-self: center;
           }
           .pointsSlide-img {
-            width: 250px;
+            width: 200px;
           }
           //slide div h2 general style
           h2 {
@@ -601,17 +643,6 @@ header {
             font-size: 22px;
             font-variant: small-caps;
             padding-bottom: 2vh;
-          }
-          //slide div h2 congrats style
-          .pointsSlide-h2 {
-            font-weight: 100;
-            font-size: $font-subtitle;
-            width: 60%;
-            background-color: $color-orange;
-            align-items: center;
-            justify-self: center;
-            padding: 15px;
-            border-radius: 5px;
             span {
               border: none;
               padding: 0;
@@ -629,7 +660,7 @@ header {
             font-size: $font-size-text;
             font-weight: 600;
             line-height: 1.5;
-            width: 70%;
+            width: 90%;
             padding: 10px;
           }
 
@@ -703,7 +734,7 @@ header {
       justify-self: center;
       display: flex;
       justify-content: space-between;
-      width: 10%;
+      width: 15%;
       padding-top: 3vh;
     }
   }
@@ -724,12 +755,12 @@ header {
 
 /* Fading animation */
 .fade {
-  animation-name: move;
-  animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-@keyframes move {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -737,6 +768,7 @@ header {
     opacity: 1;
   }
 }
+
 @media only all and (max-width: 800px) {
   /*********header************/
   header {
@@ -892,21 +924,40 @@ header {
   #main-onboarding {
     #modal {
       padding-top: 8vh;
-      grid-template: auto 4fr 1fr /1fr;
+      grid-template: auto 2fr 1fr /1fr;
       /********logo******/
       .logo-dantoto {
         display: none;
       }
       .slideshow-container {
+        height: 70vh;
         article {
           h1 {
             font-size: 25px;
+          }
+          //game div
+
+          .gameSize {
+            width: 70vw;
+            background-color: transparent;
+            display: flex;
+            section {
+              svg {
+                overflow: hidden;
+                box-sizing: border-box;
+                #closeIcon {
+                  transform: translateX(93%) translateY(13px) scale(0.55);
+                }
+                #expandIcon {
+                  transform: translateX(93%) translateY(13px) scale(0.55);
+                }
+              }
+            }
           }
           //general div
           div {
             height: 55vh;
             width: 60vw;
-            $width: 60vw;
 
             .pointsSlide-img {
               width: 200px;
@@ -934,6 +985,73 @@ header {
       }
       section {
         width: 60%;
+      }
+    }
+  }
+  .dot:not(.current) {
+    background-color: $color-white;
+  }
+}
+
+@media only all and (max-width: 800px) and (orientation: landscape) {
+  header {
+    height: 10%;
+
+    .mobile-logos {
+      .logo-dantoto-header {
+        justify-self: left;
+      }
+    }
+  }
+  //main onboarding moblie landscape
+  #main-onboarding {
+    #modal {
+      padding-top: 0;
+
+      .slideshow-container {
+        height: 75vh;
+        padding-bottom: 10px;
+        article {
+          h1 {
+            font-size: 20px;
+          }
+
+          .gameSize {
+            width: 60vw;
+            section {
+              svg {
+                height: auto;
+                #closeIcon {
+                  transform: translateX(94%) translateY(10px) scale(0.5);
+                }
+                #expandIcon {
+                  transform: translateX(94%) translateY(10px) scale(0.5);
+                }
+              }
+            }
+          }
+          //general div
+          div {
+            min-height: 50vh;
+            padding: 10px;
+            img {
+              width: 50px;
+              padding: 0 0 5px 0;
+            }
+            .pointsSlide-img {
+              width: 80px;
+            }
+
+            p {
+              font-size: 12px;
+              width: 100%;
+              line-height: 1.4;
+            }
+          }
+        }
+      }
+      section {
+        padding: 0;
       }
     }
   }

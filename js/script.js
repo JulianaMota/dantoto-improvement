@@ -1,4 +1,5 @@
 window.addEventListener("load", loadSVG);
+let svg;
 
 //show graphic - load SVG
 
@@ -51,6 +52,8 @@ function loadSVG() {
           .querySelector("#youWonPlaceholder")
           .addEventListener("click", goPrev);
       }
+      svg = document.querySelector(".gameSize svg");
+      init(svg);
     });
 }
 
@@ -58,6 +61,43 @@ function loadSVG() {
 
 function animationFallingBoxes() {
   document.querySelector("#playButton").addEventListener("click", () => {
+    console.log(svg);
+    const xBtn = document.querySelector("#closeIcon");
+    const expandBtn = document.querySelector("#expandIcon");
+    console.log(xBtn, expandBtn);
+
+    if (svgDiv.requestFullscreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
+      svgDiv.requestFullscreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    } else if (svgDiv.mozRequestFullScreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
+      /* Firefox */
+      svgDiv.mozRequestFullScreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    } else if (svgDiv.webkitRequestFullscreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
+      /* Chrome, Safari & Opera */
+      svgDiv.webkitRequestFullscreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    } else if (svgDiv.msRequestFullscreen) {
+      svgDiv.querySelector("svg").style.alignSelf = "center";
+
+      /* IE/Edge */
+      svgDiv.msRequestFullscreen();
+      xBtn.style.visibility = "visible";
+      expandBtn.style.visibility = "hidden";
+    }
+
+    document.querySelector("#youWonPlaceholder").innerHTML =
+      "YOU WON <span id='pointsPlaceholder'>30</span> POINTS";
+
     document.querySelector("#FIRST").classList.add("hide");
     TweenLite.to("#playButton", 1, {
       scale: 0.5
