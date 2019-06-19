@@ -611,6 +611,9 @@ header {
                 cursor: pointer;
                 transition: fill 0.3s;
               }
+              .squareFill {
+                opacity: 0;
+              }
             }
           }
         }
@@ -731,7 +734,7 @@ header {
       justify-self: center;
       display: flex;
       justify-content: space-between;
-      width: 10%;
+      width: 15%;
       padding-top: 3vh;
     }
   }
@@ -752,12 +755,12 @@ header {
 
 /* Fading animation */
 .fade {
-  animation-name: move;
-  animation-duration: 0.5s;
+  animation-name: fadeIn;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-@keyframes move {
+@keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -765,6 +768,7 @@ header {
     opacity: 1;
   }
 }
+
 @media only all and (max-width: 800px) {
   /*********header************/
   header {
@@ -937,15 +941,16 @@ header {
             width: 70vw;
             background-color: transparent;
             display: flex;
-
-            svg {
-              overflow: hidden;
-              box-sizing: border-box;
-              #closeIcon {
-                transform: translateX(94%) translateY(10px) scale(0.5);
-              }
-              #expandIcon {
-                transform: translateX(94%) translateY(10px) scale(0.5);
+            section {
+              svg {
+                overflow: hidden;
+                box-sizing: border-box;
+                #closeIcon {
+                  transform: translateX(93%) translateY(13px) scale(0.55);
+                }
+                #expandIcon {
+                  transform: translateX(93%) translateY(13px) scale(0.55);
+                }
               }
             }
           }
@@ -983,6 +988,9 @@ header {
       }
     }
   }
+  .dot:not(.current) {
+    background-color: $color-white;
+  }
 }
 
 @media only all and (max-width: 800px) and (orientation: landscape) {
@@ -1010,14 +1018,16 @@ header {
 
           .gameSize {
             width: 60vw;
-            svg {
-              height: auto;
-            }
-            #closeIcon {
-              transform: translateX(94%) translateY(10px) scale(0.4);
-            }
-            #expandIcon {
-              transform: translateX(94%) translateY(10px) scale(0.4);
+            section {
+              svg {
+                height: auto;
+                #closeIcon {
+                  transform: translateX(94%) translateY(10px) scale(0.5);
+                }
+                #expandIcon {
+                  transform: translateX(94%) translateY(10px) scale(0.5);
+                }
+              }
             }
           }
           //general div
@@ -1039,6 +1049,9 @@ header {
             }
           }
         }
+      }
+      section {
+        padding: 0;
       }
     }
   }
