@@ -424,6 +424,11 @@ th:nth-child(5) {
   color: white;
   border-style: none;
   border-radius: 5px;
+  height: 40px;
+  width: 200px;
+  font-size: 19px;
+  line-height: 19px;
+  margin: 50px 50px 20px 0;
 }
 
 .modalClose {
