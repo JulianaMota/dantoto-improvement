@@ -592,6 +592,25 @@ ifDeleteDiv h4 {
     margin-top: 0;
   }
 
+  #box {
+    display: grid;
+    grid-template-columns: 110px 110px 110px;
+    grid-template-rows: 50px 50px;
+  }
+
+  .filter {
+    font-size: 15px;
+  }
+
+  #soft,
+  #full,
+  #all {
+    border-radius: 4px;
+    height: 30px;
+    width: 100px;
+    font-size: 13px;
+  }
+
   #tableWrapper {
     width: 90vw;
   }
