@@ -144,6 +144,10 @@ a {
   text-decoration: none;
 }
 
+.hide {
+  display: none;
+}
+
 /*********header************/
 header {
   background-color: #ae4a0c;
@@ -526,7 +530,7 @@ header aside ul a:hover {
   padding: 10px;
 }
 
-.btn, #main-signup section #acount-choose .btn-face, #main-signup section #acount-choose .btn-google, #main-signup section #acount-choose .btn-email, #main-signup section #acount-form form div .sub-btn, #main-signup section #account-created a, #main-onboarding #modal .slideshow-container article div button {
+.btn, #main-signup section #acount-choose .btn-face, #main-signup section #acount-choose .btn-google, #main-signup section #acount-choose .btn-email, #main-signup section #acount-form form div .sub-btn, #main-signup section #account-created a, #main-onboarding #modal .slideshow-container article div .pointsSlide-h2 .pointsSlide-play, #main-onboarding #modal .slideshow-container article div button {
   color: #fff;
   border-radius: 5px;
   border: none;
@@ -536,7 +540,7 @@ header aside ul a:hover {
   outline: none;
 }
 
-.btn:hover, #main-signup section #acount-choose .btn-face:hover, #main-signup section #acount-choose .btn-google:hover, #main-signup section #acount-choose .btn-email:hover, #main-signup section #acount-form form div .sub-btn:hover, #main-signup section #account-created a:hover, #main-onboarding #modal .slideshow-container article div button:hover {
+.btn:hover, #main-signup section #acount-choose .btn-face:hover, #main-signup section #acount-choose .btn-google:hover, #main-signup section #acount-choose .btn-email:hover, #main-signup section #acount-form form div .sub-btn:hover, #main-signup section #account-created a:hover, #main-onboarding #modal .slideshow-container article div .pointsSlide-h2 .pointsSlide-play:hover, #main-onboarding #modal .slideshow-container article div button:hover {
   cursor: pointer;
   background-color: #da5713;
 }
@@ -656,6 +660,17 @@ header aside ul a:hover {
   width: 200px;
 }
 
+#main-onboarding #modal .slideshow-container article div .pointsSlide-h2 .pointsSlide-play {
+  background-color: #da5713;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+#main-onboarding #modal .slideshow-container article div .pointsSlide-h2 .pointsSlide-play:hover {
+  transform: scale(0.8);
+  transition: 0.2s;
+}
+
 #main-onboarding #modal .slideshow-container article div h2 {
   color: #fff;
   text-align: center;
@@ -690,7 +705,7 @@ header aside ul a:hover {
 
 #main-onboarding #modal .slideshow-container article div .pointsSlide-p {
   color: #fff;
-  text-shadow: 3px 3px 4px #000000;
+  text-shadow: 2px 2px 3px #000000;
   font-style: italic;
   font-weight: 100;
   letter-spacing: 1px;
@@ -713,7 +728,7 @@ header aside ul a:hover {
   align-self: flex-end;
   width: 60%;
   text-align: center;
-  height: 14px;
+  height: fit-content;
   border-radius: 5px;
   color: #fff;
   font-size: 14px;
@@ -967,6 +982,11 @@ header aside ul a:hover {
   #main-onboarding #modal .slideshow-container article div .pointsSlide-img {
     width: 200px;
   }
+  #main-onboarding #modal .slideshow-container article div .pointsSlide-h2 .pointsSlide-play {
+    background-color: #da5713;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
   #main-onboarding #modal .slideshow-container article div h2 {
     font-size: 20px;
   }
@@ -991,15 +1011,48 @@ header aside ul a:hover {
   }
 }
 
-@media only all and (max-width: 800px) and (orientation: landscape) {
+@media only all and (max-width: 830px) and (orientation: landscape) {
+  /************body********/
+  #bodySignup {
+    height: inherit;
+  }
+  #headerSignup {
+    height: fit-content;
+    padding: 7px 0 7px 0;
+  }
   header {
     height: 10%;
   }
   header .mobile-logos .logo-dantoto-header {
     justify-self: left;
   }
+  /***main mobile***/
+  #main-signup {
+    padding-bottom: 40px;
+  }
+  #main-signup section {
+    /********article account form******/
+  }
+  #main-signup section article {
+    min-height: 500px;
+  }
+  #main-signup section #acount-form {
+    grid-template: auto 1fr auto/ 90%;
+  }
+  #main-signup section #acount-form form div input {
+    padding: 5px 5%;
+  }
+  /*******animation**********/
+  .move-lable {
+    animation: moveLable 0.5s ease-in-out forwards;
+  }
+  @keyframes moveLable {
+    100% {
+      transform: translate(-3rem, -0.8rem) scale(0.8);
+    }
+  }
   #main-onboarding #modal {
-    padding-top: 0;
+    padding-top: 3vh;
   }
   #main-onboarding #modal .slideshow-container {
     height: 75vh;
@@ -1031,10 +1084,20 @@ header aside ul a:hover {
   #main-onboarding #modal .slideshow-container article div .pointsSlide-img {
     width: 80px;
   }
+  #main-onboarding #modal .slideshow-container article div .pointsSlide-h2 .pointsSlide-play {
+    margin-top: 2px;
+    height: 40px;
+  }
+  #main-onboarding #modal .slideshow-container article div .pointsSlide-p {
+    font-size: 14px;
+  }
   #main-onboarding #modal .slideshow-container article div p {
     font-size: 12px;
     width: 100%;
     line-height: 1.4;
+  }
+  #main-onboarding #modal .slideshow-container article div a {
+    padding: 10px;
   }
   #main-onboarding #modal section {
     padding: 0;

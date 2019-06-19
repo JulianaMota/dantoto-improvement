@@ -48,12 +48,15 @@ function startSlide(evt) {
 }
 function outSlide(evt) {
   endX = startX - evt.changedTouches[0].clientX;
-  console.log(endX);
-  console.log(slideIndex);
+  // console.log(endX);
+  // console.log(slideIndex);
   const screenThird = screen.width / 3;
-  console.log(screenThird);
+  // console.log(screenThird);
   if (endX > screenThird && endX > 0) {
     plus(1);
+  }
+  if (slideIndex === 6) {
+    document.querySelector("#GhostRiders").pause();
   }
   if (slideIndex === 7) {
     document.querySelector("#main-onboarding section").style.display = "none";
