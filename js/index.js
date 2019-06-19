@@ -55,6 +55,9 @@ function outSlide(evt) {
   if (endX > screenThird && endX > 0) {
     plus(1);
   }
+  if (slideIndex === 6) {
+    document.querySelector("#GhostRiders").pause();
+  }
   if (slideIndex === 7) {
     document.querySelector("#main-onboarding section").style.display = "none";
   }
