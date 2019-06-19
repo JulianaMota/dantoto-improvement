@@ -41,7 +41,8 @@ function loadSVG() {
 
       console.log(document.querySelector("#pointsText").textContent);
       if (document.querySelector("#pointsText").textContent == 0) {
-        document.querySelector("#youWonPlaceholder").innerHTML = "play now";
+        document.querySelector("#youWonPlaceholder button").innerHTML =
+          "play now";
         document.querySelector("#youWonPlaceholder").style.cursor = "pointer";
         document.querySelector("section article:nth-child(6) h1").textContent =
           "THANK YOU!";
@@ -94,9 +95,6 @@ function animationFallingBoxes() {
       xBtn.style.visibility = "visible";
       expandBtn.style.visibility = "hidden";
     }
-
-    document.querySelector("#youWonPlaceholder").innerHTML =
-      "YOU WON <span id='pointsPlaceholder'>30</span> POINTS";
 
     document.querySelector("#FIRST").classList.add("hide");
     TweenLite.to("#playButton", 1, {
@@ -408,6 +406,7 @@ function showPoints() {
     "YOU WON <span id='pointsPlaceholder'>0</span>";
   document.querySelector("#savePoint").innerHTML = "save your points";
   console.log(chosenHorse);
+  document.querySelector(".pointsSlide-img").classList.remove("hide");
 
   document
     .querySelectorAll(

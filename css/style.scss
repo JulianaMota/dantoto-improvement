@@ -150,6 +150,9 @@ body {
 a {
   text-decoration: none;
 }
+.hide {
+  display: none;
+}
 
 /*********header************/
 header {
@@ -634,6 +637,18 @@ header {
           .pointsSlide-img {
             width: 200px;
           }
+          .pointsSlide-h2 {
+            .pointsSlide-play {
+              @extend .btn;
+              background-color: $color-orange;
+              text-transform: uppercase;
+              margin-top: 20px;
+            }
+            .pointsSlide-play:hover {
+              transform: scale(0.8);
+              transition: 0.2s;
+            }
+          }
           //slide div h2 general style
           h2 {
             color: $color-white;
@@ -666,7 +681,7 @@ header {
 
           .pointsSlide-p {
             color: $color-white;
-            text-shadow: 3px 3px 4px #000000;
+            text-shadow: 2px 2px 3px #000000;
             font-style: italic;
             font-weight: 100;
             letter-spacing: 1px;
@@ -688,7 +703,7 @@ header {
             align-self: flex-end;
             width: 60%;
             text-align: center;
-            height: $font-size-text;
+            height: fit-content;
             border-radius: 5px;
             color: $color-white;
             font-size: $font-size-text;
@@ -962,6 +977,13 @@ header {
             .pointsSlide-img {
               width: 200px;
             }
+            .pointsSlide-h2 {
+              .pointsSlide-play {
+                background-color: $color-orange;
+                text-transform: uppercase;
+                margin-top: 20px;
+              }
+            }
             //slide div h2 general style
             h2 {
               font-size: $font-size-title;
@@ -993,7 +1015,15 @@ header {
   }
 }
 
-@media only all and (max-width: 800px) and (orientation: landscape) {
+@media only all and (max-width: 830px) and (orientation: landscape) {
+  /************body********/
+  #bodySignup {
+    height: inherit;
+  }
+  #headerSignup {
+    height: fit-content;
+    padding: 7px 0 7px 0;
+  }
   header {
     height: 10%;
 
@@ -1003,10 +1033,43 @@ header {
       }
     }
   }
+
+  /***main mobile***/
+  #main-signup {
+    padding-bottom: 40px;
+    section {
+      article {
+        min-height: 500px;
+      }
+      /********article account form******/
+      #acount-form {
+        grid-template: auto 1fr auto/ 90%;
+        form {
+          div {
+            input {
+              padding: 5px 5%;
+            }
+          }
+        }
+      }
+    }
+  }
+  /*******animation**********/
+
+  //move lable up animation
+  .move-lable {
+    animation: moveLable 0.5s ease-in-out forwards;
+  }
+
+  @keyframes moveLable {
+    100% {
+      transform: translate(-3rem, -0.8rem) scale(0.8);
+    }
+  }
   //main onboarding moblie landscape
   #main-onboarding {
     #modal {
-      padding-top: 0;
+      padding-top: 3vh;
 
       .slideshow-container {
         height: 75vh;
@@ -1041,11 +1104,23 @@ header {
             .pointsSlide-img {
               width: 80px;
             }
+            .pointsSlide-h2 {
+              .pointsSlide-play {
+                margin-top: 2px;
+                height: 40px;
+              }
+            }
+            .pointsSlide-p {
+              font-size: 14px;
+            }
 
             p {
               font-size: 12px;
               width: 100%;
               line-height: 1.4;
+            }
+            a {
+              padding: 10px;
             }
           }
         }
