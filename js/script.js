@@ -310,17 +310,14 @@ function horseRace() {
       rotation: -10,
       transformOrigin: "50% 50%"
     });
+    scores.push(Math.round(time * 100) / 100);
 
     TweenLite.to(element, time, {
       ease: "run" + [i],
       x: 850,
 
       onComplete: function() {
-        console.log(i, Math.round(time * 100) / 100);
-        scores.push(Math.round(time * 100) / 100);
         horses.push(element.dataset.name);
-        time = Math.random() * 10 + 10;
-
         scores.sort(function(a, b) {
           return a - b;
         });
@@ -329,6 +326,19 @@ function horseRace() {
         if (horses.length === 4) {
           scores.forEach(element => {
             scoresString.push(element.toString().replace(".", ":"));
+
+            scoresString.forEach(element => {
+              console.log(element.length);
+              if (element.length == 2) {
+                console.log(element);
+                let checkIndex = scoresString.indexOf(element);
+                scoresString.splice(checkIndex, 1, element + ":00");
+              }
+              if (element.length == 4) {
+                let checkIndex = scoresString.indexOf(element);
+                scoresString.splice(checkIndex, 1, element + "0");
+              }
+            });
           });
           scoresString.sort(function(a, b) {
             return a - b;
