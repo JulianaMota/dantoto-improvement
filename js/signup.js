@@ -99,22 +99,22 @@ function validatePassword() {
   }
 }
 
-//Change html content for account created
-form.elements.submit.addEventListener("click", e => {
-  if (
-    form.elements.repassword.checkValidity() &&
-    form.elements.password.checkValidity() &&
-    form.elements.email.checkValidity() &&
-    form.elements.username.checkValidity()
-  ) {
-    const acountComplete = document.querySelector("#account-created");
-    acountComplete.classList.add("appearArticle");
-    const form = document.querySelector("#acount-form");
-    form.style.transform = "translate3d(0, 0, 0)";
-    form.classList.add("hideArticle");
-  } else {
-  }
-});
+// //Change html content for account created
+// form.elements.submit.addEventListener("click", e => {
+//   if (
+//     form.elements.repassword.checkValidity() &&
+//     form.elements.password.checkValidity() &&
+//     form.elements.email.checkValidity() &&
+//     form.elements.username.checkValidity()
+//   ) {
+//     const acountComplete = document.querySelector("#account-created");
+//     acountComplete.classList.add("appearArticle");
+//     const form = document.querySelector("#acount-form");
+//     form.style.transform = "translate3d(0, 0, 0)";
+//     form.classList.add("hideArticle");
+//   } else {
+//   }
+// });
 
 // add content to database
 form.addEventListener("submit", e => {
@@ -140,5 +140,11 @@ function post(obj) {
     body: JSON.stringify(obj)
   })
     .then(res => res.json())
-    .then(data => {});
+    .then(data => {
+      const acountComplete = document.querySelector("#account-created");
+      acountComplete.classList.add("appearArticle");
+      const form = document.querySelector("#acount-form");
+      form.style.transform = "translate3d(0, 0, 0)";
+      form.classList.add("hideArticle");
+    });
 }
